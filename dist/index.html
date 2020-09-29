@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>To-Do List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <header>
+      <ul>
+        <li><button class="btn btn--home" type="button"></button></li>
+        <li><button class="btn btn--nav" type="button" data-toggle="nav"></button></li>
+        <li><button class="btn btn--add" type="button"></button></li>
+        <li>
+          <div class="sort">
+            <button class="btn btn--toggle" type="button" data-toggle="sort">SORT BY</button>
+            <ul class="sort-dropdown">
+              <li class="sort-item">Priority</li>
+              <li class="sort-item">Date</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </header>
+
+    <nav>
+      <ul>
+        <li>
+          <div class="nav__to-do">
+            <button class="btn btn--toggle" type="button" data-toggle="to-do_list">Tasks</button>
+            <ul id="to-do_list">
+              <li><button class="btn" type="button" data-filter="all">All</button></li>
+              <li><button class="btn" type="button" data-filter="today">Today</button></li>
+              <li><button class="btn" type="button" data-filter="upcoming">Upcoming</button></li>
+              <li><button class="btn" type="button" data-filter="upcoming">Anytime</button></li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class="nav__projects">
+            <button class="btn btn--toggle" type="button" data-toggle="projects_list">Projects</button>
+            <ul id="project_list">
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class="nav__filters">
+            <button class="btn btn--toggle" type="button" data-toggle="filters_list">Filters</button>
+            <ul id="filters_list">
+              <li><button class="btn" type="button" data-filter="priority1">High Priority</button></li>
+              <li><button class="btn" type="button" data-filter="priority2">Medium Priority</button></li>
+              <li><button class="btn" type="button" data-filter="priority3">Low Priority</button></li>
+              <li><button class="btn" type="button" data-filter="priority4">No Priority</button></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+
+      <h1 id="title"></h1>
+
+      <div class="content"></div>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
