@@ -6,6 +6,7 @@
   <title>To-Do List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/9fbb921c08.js" crossorigin="anonymous"></script>
   <script defer src="main.js"></script>
 </head>
 
@@ -15,12 +16,12 @@
 
     <header>
       <ul>
-        <li><button class="btn btn--home" type="button"></button></li>
-        <li><button class="btn btn--nav" type="button" data-toggle="nav"></button></li>
-        <li><button class="btn btn--add" type="button"></button></li>
+        <li><button class="btn btn--home" type="button"><i class="fas fa-home"></i></button></li>
+        <li><button class="btn btn--nav" type="button" data-toggle="nav"><i class="fas fa-bars"></i></button></li>
+        <li><button class="btn btn--add" type="button"><i class="fas fa-plus"></i></button></li>
         <li>
           <div class="sort">
-            <button class="btn btn--toggle" type="button" data-toggle="sort">SORT BY</button>
+            <button class="btn btn--toggle" type="button" data-toggle="sort"><i class="fas fa-caret-down"></i>SORT BY</button>
             <ul class="sort-dropdown">
               <li class="sort-item">Priority</li>
               <li class="sort-item">Date</li>
@@ -34,7 +35,7 @@
       <ul>
         <li>
           <div class="nav__to-do">
-            <button class="btn btn--toggle" type="button" data-toggle="to-do_list">Tasks</button>
+            <button class="btn btn--toggle" type="button" data-toggle="to-do_list"><i class="fas fa-caret-down"></i>Tasks</button>
             <ul id="to-do_list">
               <li><button class="btn" type="button" data-filter="all">All</button></li>
               <li><button class="btn" type="button" data-filter="today">Today</button></li>
@@ -46,15 +47,17 @@
 
         <li>
           <div class="nav__projects">
-            <button class="btn btn--toggle" type="button" data-toggle="projects_list">Projects</button>
+            <button class="btn btn--toggle" type="button" data-toggle="projects_list"><i class="fas fa-caret-down"></i>Projects</button>
             <ul id="project_list">
+              <li><button class="btn" type="button" data-filter="project-1">Project 1</button></li>
+              <li><button class="btn" type="button" data-filter="project-2">Project 2</button></li>
             </ul>
           </div>
         </li>
 
         <li>
           <div class="nav__filters">
-            <button class="btn btn--toggle" type="button" data-toggle="filters_list">Filters</button>
+            <button class="btn btn--toggle" type="button" data-toggle="filters_list"><i class="fas fa-caret-down"></i>Filters</button>
             <ul id="filters_list">
               <li><button class="btn" type="button" data-filter="priority1">High Priority</button></li>
               <li><button class="btn" type="button" data-filter="priority2">Medium Priority</button></li>
@@ -70,7 +73,18 @@
 
       <h1 id="title"></h1>
 
-      <div class="content"></div>
+      <div class="content">
+
+        <div class="to-do">
+          <input class="to-do__check" type="checkbox">
+          <h3 class="to-do__title">Title</h3>
+          <div class="to-do__description">Celebrate Rutile's birthday at 13.</div>
+          <div class="to-do__date">30/09/20</div>
+          <div class="to-do__priority"><i class="far fa-bookmark"></i></div>
+          <div class="to-do__comment" data-comment="This is not a comment."><i class="far fa-comment-alt"></i></div>
+        </div>
+
+      </div>
 
     </main>
 
