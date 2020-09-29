@@ -19,7 +19,10 @@
     "url": "https://github.com/Aure-en/to-do/issues"
   },
   "homepage": "https://github.com/Aure-en/to-do#readme",
-  "dependencies": {},
+  "dependencies": {
+    "sass": "^1.26.11",
+    "webpack-cli": "^3.3.12"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
