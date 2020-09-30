@@ -17,3 +17,18 @@
     }
   }
 }
+
+.main__header {
+
+  ul {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr 5.5rem auto;
+    margin-left: 2.35rem;
+    grid-gap: 1rem;
+  }
+
+  &__date {
+    justify-self: center;
+  }
+
+}

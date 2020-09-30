@@ -18,9 +18,10 @@ $color-priority: (
 
 $color-date: (
   all: lighten($color-primary, 15%),
-  today: rgb(207, 102, 102),
+  today: rgb(235, 153, 99),
   upcoming: rgb(141, 90, 137),
-  anytime: rgb(122, 122, 122)
+  anytime: rgb(122, 122, 122),
+  late: rgb(148, 32, 32)
 );
 
 // Icons
@@ -30,6 +31,12 @@ $icons-date: (
   today: "\f272",
   upcoming: "\f274",
   anytime: "\f133",
+);
+
+$icons-caret: (
+  up: "\f0d8",
+  down: "\f0d7",
+  right: "\f0da"
 );
 
 // Others

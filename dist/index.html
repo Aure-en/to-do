@@ -29,7 +29,7 @@
         <ul>
           <li class="nav__category">
             <div class="nav__to-do">
-              <button class="btn btn--toggle nav--heading" type="button" data-toggle="to-do_list"><i class="fas fa-caret-down"></i>Tasks</button>
+              <button class="btn btn--toggle nav--heading" type="button" data-toggle="to-do_list">Tasks</button>
               <ul id="to-do_list">
                 <li class="date-all"><button class="btn btn--filter" type="button" data-filter="all">All</button></li>
                 <li class="date-today"><button class="btn btn--filter" type="button" data-filter="today">Today</button></li>
@@ -41,7 +41,7 @@
 
           <li class="nav__category">
             <div class="nav__projects">
-              <button class="btn btn--toggle nav--heading" type="button" data-toggle="projects_list"><i class="fas fa-caret-down"></i>Projects</button>
+              <button class="btn btn--toggle nav--heading" type="button" data-toggle="projects_list">Projects</button>
               <ul id="project_list">
                 <li><button class="btn btn--filter" type="button" data-filter="project-1">Project 1</button></li>
                 <li><button class="btn btn--filter" type="button" data-filter="project-2">Project 2</button></li>
@@ -52,7 +52,7 @@
 
           <li class="nav__category">
             <div class="nav__filters">
-              <button class="btn btn--toggle nav--heading" type="button" data-toggle="filters_list"><i class="fas fa-caret-down"></i>Filters</button>
+              <button class="btn btn--toggle nav--heading" type="button" data-toggle="filters_list">Filters</button>
               <ul id="filters_list">
                 <li class="priority-high"><button class="btn btn--filter" type="button" data-filter="priority1">High Priority</button></li>
                 <li class="priority-medium"><button class="btn btn--filter" type="button" data-filter="priority2">Medium Priority</button></li>
@@ -66,22 +66,22 @@
 
       <main>
 
-        <h1 id="title"></h1>
-
         <div class="content">
 
-          <header>
+          <h1>All</h1>
+
+          <header class="main__header">
             <ul>
               <li><button type="button" class="btn">Title</button></li>
               <li><button type="button" class="btn">Description</button></li>
-              <li><button type="button" class="btn">Date</button></li>
+              <li class="main__header__date"><button type="button" class="btn">Date</button></li>
               <li><button type="button" class="btn">Priority</button></li>
             </ul>
           </header>
 
           <div class="to-do">
             <input class="to-do__check" type="checkbox">
-            <h3 class="to-do__title">Title</h3>
+            <h3 class="to-do__title">Birthday</h3>
             <div class="to-do__description">Celebrate Rutile's birthday at 13.</div>
             <div class="to-do__date">30/09/20</div>
             <div class="to-do__priority"><i class="far fa-bookmark"></i></div>

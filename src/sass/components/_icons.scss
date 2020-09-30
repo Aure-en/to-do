@@ -2,6 +2,8 @@ i {
 	margin-right: .5rem;
 }
 
+// NAV-ICONS
+
 .nav {
   &__to-do li:before,
   &__projects li:before,
@@ -10,7 +12,7 @@ i {
   }
 
   &__to-do li:before {
-    @include font-awesome();
+    @include font-awesome-400();
   }
 
   &__projects li:before {
@@ -20,27 +22,42 @@ i {
 
   &__filters li:before {
     content: "\f02e";
-    @include font-awesome();
+    @include font-awesome-400();
   }
 }
 
-//Color Priority Icons
+// Color Priority Icons
 @each $level, $color in $color-priority {
   .priority-#{$level}::before {
     color: $color;
   }
 }
 
-//Date Icons
+// Date Icons
 @each $date, $value in $icons-date {
   .date-#{$date}::before {
     content: $value;
   }
 }
 
-//Color Date Icons
+// Color Date Icons
 @each $date, $value in $color-date {
   .date-#{$date}::before {
     color: $value;
   }
+}
+
+// Category Icons
+.nav--heading:before {
+  content: map-get($icons-caret, down);
+  color: $color-primary;
+  @include font-awesome-700();
+  margin-right: .75rem;
+}
+
+// MAIN ICONS
+
+.main__header li:before {
+  content: map-get($icons-caret, down);
+  @include font-awesome-700();
 }

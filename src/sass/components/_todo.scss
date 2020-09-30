@@ -1,0 +1,11 @@
+.to-do {
+  display: grid;
+  grid-template-columns: auto 6.5rem 1fr 6.5rem 2rem;
+  grid-gap: 1rem;
+  align-items: start;
+  
+  &__check {
+    margin-top: 7px;
+  }
+
+}
