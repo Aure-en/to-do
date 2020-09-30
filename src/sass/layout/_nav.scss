@@ -1,0 +1,41 @@
+.nav {
+  
+  background: $color-secondary;
+  width: 250px;
+  border-right: 1px solid rgba($color-primary, .25);
+  padding: 2rem .25rem 0 2rem;
+
+  &__category {
+    margin-bottom: .75rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid rgba($color-primary, .1);
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    li {
+      display: flex;
+      
+      &:hover {
+        background: rgba($color-primary, .04);
+      }
+
+      button {
+        // Makes the whole line clickable instead of just the text.
+        flex: 1;
+        text-align: start;
+      }
+    }
+  }
+
+  &--heading {
+    width: 100%;
+    text-align: start;
+    
+    &:hover {
+      background: rgba($color-primary, .07);
+    }
+  }
+
+}

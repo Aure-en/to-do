@@ -1,0 +1,36 @@
+// Fonts
+$font-primary: 'Nanum Gothic', Arial;
+
+
+// Colors
+$color-primary: rgb(42, 43, 104);
+$color-secondary: rgb(238, 240, 241);
+
+$color-header: #fff;
+$color-projects: rgba($color-primary, .5);
+
+$color-priority: (
+  high: rgb(161, 66, 66),
+  medium: rgb(231, 154, 103),
+  low: rgb(93, 151, 91),
+  none: rgb(199, 199, 199)
+);
+
+$color-date: (
+  all: lighten($color-primary, 15%),
+  today: rgb(207, 102, 102),
+  upcoming: rgb(141, 90, 137),
+  anytime: rgb(122, 122, 122)
+);
+
+// Icons
+
+$icons-date: (
+  all: "\f073",
+  today: "\f272",
+  upcoming: "\f274",
+  anytime: "\f133",
+);
+
+// Others
+$margin-indent: 0 .25rem 0 1.25rem;

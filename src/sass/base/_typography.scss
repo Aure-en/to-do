@@ -1,0 +1,26 @@
+body,
+button {
+  font-family: $font-primary;
+  font-size: .875rem;
+  line-height: 1.9;
+}
+
+.btn {
+  &--page--header {
+    color: $color-header;
+  }
+
+  &--icon {
+    font-size: 1.25rem;
+  }
+}
+
+.nav {
+  &--heading {
+    text-transform: uppercase;
+    color: $color-primary;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 2.5;
+  }
+}

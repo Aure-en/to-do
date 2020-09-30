@@ -1,0 +1,46 @@
+i {
+	margin-right: .5rem;
+}
+
+.nav {
+  &__to-do li:before,
+  &__projects li:before,
+  &__filters li:before {
+    margin: $margin-indent;
+  }
+
+  &__to-do li:before {
+    @include font-awesome();
+  }
+
+  &__projects li:before {
+    content: "⚫";
+    color: $color-projects;
+  }
+
+  &__filters li:before {
+    content: "\f02e";
+    @include font-awesome();
+  }
+}
+
+//Color Priority Icons
+@each $level, $color in $color-priority {
+  .priority-#{$level}::before {
+    color: $color;
+  }
+}
+
+//Date Icons
+@each $date, $value in $icons-date {
+  .date-#{$date}::before {
+    content: $value;
+  }
+}
+
+//Color Date Icons
+@each $date, $value in $color-date {
+  .date-#{$date}::before {
+    color: $value;
+  }
+}
