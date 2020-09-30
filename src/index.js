@@ -1,7 +1,1 @@
-import "./sass/main.scss"
-
-function a () {
-  console.log(a);
-}
-
-a();
+import './sass/main.scss'
