@@ -1,5 +1,6 @@
 export class Project {
-  constructor (name) {
+  constructor (name, index) {
     this.name = name
+    this.index = index
   }
 }
