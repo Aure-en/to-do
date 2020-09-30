@@ -33,3 +33,21 @@ export const projectList = () => {
     remove
   }
 }
+
+export const sectionList = () => {
+  const content = []
+
+  const add = (section) => {
+    content.push(section)
+  }
+
+  const remove = (section) => {
+    content[content.indexOf(section)] = null
+  }
+
+  return {
+    content,
+    add,
+    remove
+  }
+}
