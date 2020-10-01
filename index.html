@@ -45,8 +45,25 @@
               <ul id="project_list">
                 <li><button class="btn btn--filter" type="button" data-filter="project-1">Project 1</button></li>
                 <li><button class="btn btn--filter" type="button" data-filter="project-2">Project 2</button></li>
-                <li><button class="btn btn--filter" type="button">Add Project</button></li>
+                <li class="project_list__add"><button class="btn btn--add" type="button">Add Project</button></li>
               </ul>
+
+              <form class="add add--project">
+
+                <div class="add__content add__content--project">
+                  <label>
+                    <input type="text" name="name" placeholder="Project's Name">
+                  </label>
+                </div>
+
+                <div class="add__finish">
+                  <button type="button" class="btn btn--submit">Add Project</button>
+                  <button type="button" class="btn btn--cancel">Cancel</button>
+                </div>
+
+
+              </form>
+
             </div>
           </li>
 
@@ -88,6 +105,51 @@
               <div class="to-do__priority"><i class="far fa-bookmark"></i></div>
             </div>
           </div>
+
+          <form class="add add--todo" id="add-todo">
+
+            <div class="add__content add__content--todo">
+              <label>
+                <input type="text" name="title" placeholder="Title">
+              </label>
+
+              <label>
+                <textarea name="description" placeholder="Description"></textarea>
+              </label>
+
+              <div class="add__details">
+                <label>
+                  <input type="date" name="date" id="date">
+                </label>
+
+                <div class="add__priority">
+                  <button type="button" class="btn btn--toggle" data-toggle="add-priority"><i class="far fa-bookmark"></i></button>
+                  
+                  <div class="add-priority hidden" id="add-priority">
+
+                    <label for="priority-high" class="priority-high"><i class="far fa-bookmark"></i></label>
+                    <input type="radio" id="priority-high" name="priority-high" value="priority-high">
+
+                    <label for="priority-med" class="priority-med"><i class="far fa-bookmark"></i></label>
+                    <input type="radio" id="priority-med" name="priority-med" value="priority-med">
+
+                    <label for="priority-low" class="priority-low"><i class="far fa-bookmark"></i></label>
+                    <input type="radio" id="priority-low" name="priority-low" value="priority-low">
+                    
+                    <label for="priority-none" class="priority-none"><i class="far fa-bookmark"></i></label>
+                    <input type="radio" id="priority-none" name="priority-none" value="priority-none">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="add__finish">
+              <button type="button" class="btn btn--submit">Add Task</button>
+              <button type="button" class="btn btn--cancel">Cancel</button>
+            </div>
+
+          </form>
 
         </div>
 
