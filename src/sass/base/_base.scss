@@ -47,6 +47,15 @@ table {
 	border-spacing: 0;
 }
 
+input,
+textarea {
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -68,4 +77,8 @@ body {
 	top: 50px;
 	display: flex;
 	height: calc(100% - 50px);
+}
+
+.hidden {
+	display: none !important;
 }

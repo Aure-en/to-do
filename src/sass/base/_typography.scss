@@ -23,6 +23,27 @@ h1 {
   &--icon {
     font-size: 1.25rem;
   }
+
+  &--submit,
+  &--cancel {
+    text-transform: uppercase;
+    font-size: .85em;
+    letter-spacing: -.5px;
+  }
+
+  &--submit {
+    color: #fff;
+  }
+
+  &--cancel {
+    color: rgba($color-primary, .5);
+
+    &:hover {
+      color: rgba($color-primary, .7);
+    }
+
+  }
+
 }
 
 .nav {
@@ -42,4 +63,23 @@ h1 {
 
 .to-do__title {
   font-weight: 700;
+}
+
+// Form
+
+input,
+textarea {
+  font-family: $font-primary;
+}
+
+[name="title"] {
+  font-weight: 700;
+}
+
+[name="date"] {
+  color: $color-form;
+}
+
+.add-priority {
+  font-size: 1.1rem;
 }

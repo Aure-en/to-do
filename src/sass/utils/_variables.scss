@@ -8,6 +8,7 @@ $color-secondary: rgb(238, 240, 241);
 
 $color-header: #fff;
 $color-projects: rgba($color-primary, .5);
+$color-form: rgb(142, 142, 142);
 
 $color-priority: (
   high: rgb(161, 66, 66),
@@ -38,6 +39,8 @@ $icons-caret: (
   down: "\f0d7",
   right: "\f0da"
 );
+
+$icon-add: "\f067";
 
 // Others
 $margin-indent: 0 .25rem 0 1.25rem;

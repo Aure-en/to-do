@@ -19,7 +19,7 @@ export const todo = (todoObj) => {
   }
 
   const todoPriority = document.createElement('div')
-  todoPriority.classList.add('to-do__priority', todoObj.priority)
+  todoPriority.classList.add('to-do__priority', `priority-${todoObj.priority}`)
   todoPriority.innerHTML = '<i class="far fa-bookmark"></i>'
   todoElem.append(todoPriority)
 
