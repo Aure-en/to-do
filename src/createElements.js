@@ -4,6 +4,9 @@ const projectList = document.querySelector('#project_list')
 export const todo = (todoObj) => {
   const todoElem = document.createElement('div')
   todoElem.classList.add('to-do')
+  todoElem.setAttribute('data-date', todoObj.date)
+  todoElem.setAttribute('data-priority', todoObj.priority)
+  todoElem.setAttribute('data-project', todoObj.project)
 
   const todoCheck = document.createElement('input')
   todoCheck.classList.add('to-do__check')
