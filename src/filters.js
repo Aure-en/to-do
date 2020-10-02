@@ -1,5 +1,4 @@
 // Filter the to-do that are currently displayed depending on their priority, due-date, etc...
-
 export const filter = (filter, value, todoList) => {
   for (const todo of todoList) {
     if (todo.getAttribute(`data-${filter}`) === value) {
@@ -10,7 +9,7 @@ export const filter = (filter, value, todoList) => {
   }
 }
 
-// Display all to-dos without.
+// Display all to-dos.
 export const removeFilter = (todoList) => {
   for (const todo of todoList) {
     todo.classList.remove('hidden')
