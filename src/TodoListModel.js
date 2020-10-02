@@ -6,13 +6,20 @@ export class TodoListModel {
 
   addTodo (todo) {
     this.todos.push(todo)
+    this.onTodoListChange(this.todos)
   }
 
   editTodo (todo, field, update) {
     this.todos[todo.id][field] = update
+    this.onTodoListChange(this.todos)
   }
 
-  removeTodo (id) {
-    this.todos = this.todos.map((todo) => todo.id !== id)
+  removeTodo (todo) {
+    this.todos = this.todos.splice(this.todos.indexOf(todo), 1)
+    this.onTodoListChange(this.todos)
+  }
+
+  bindTodoListChange (callback) {
+    this.onTodoListChange = callback
   }
 }

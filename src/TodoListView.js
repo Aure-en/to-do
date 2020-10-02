@@ -1,3 +1,5 @@
+import { Todo } from './Todo'
+
 export class TodoListView {
   constructor () {
     // Section of the Todo List
@@ -7,8 +9,7 @@ export class TodoListView {
     this.title = document.querySelector('[name="title"]')
     this.description = document.querySelector('[name="description"]')
     this.date = document.querySelector('[name="date"]')
-    this.priority = document.querySelector('[name="priority"] checked')
-    this.submit = document.querySelector('.submit-todo')
+    this.submit = document.querySelector('#submit-todo')
   }
 
   // Get form values
@@ -25,7 +26,7 @@ export class TodoListView {
   }
 
   get _todoPriority () {
-    return this.priority.value
+    return document.querySelector('[name="priority"]:checked').value
   }
 
   // Reset form inputs
@@ -48,5 +49,14 @@ export class TodoListView {
   // Only renders the last Todo of the List (used when we add a Todo)
   renderLast (todoList) {
     todoList[todoList.length - 1].render()
+  }
+
+  // Event Listeners on the DOM elements
+
+  bindAddTodo (handler) {
+    this.submit.addEventListener('click', () => {
+      handler(new Todo(this._todoTitle, this._todoDescription, this._todoDate, this._todoPriority, '', '', ''))
+      this._resetInputs()
+    })
   }
 }
