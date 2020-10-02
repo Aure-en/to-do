@@ -29,8 +29,8 @@
         <ul>
           <li class="nav__category">
             <div class="nav__to-do">
-              <button class="btn btn--toggle nav--heading" type="button" data-toggle="to-do_list">Tasks</button>
-              <ul id="to-do_list">
+              <button class="btn btn--toggle nav--heading" type="button" data-toggle="to-do_dates">Tasks</button>
+              <ul id="to-do_dates">
                 <li class="date-all"><button class="btn btn--filter" type="button" data-filter="all">All</button></li>
                 <li class="date-today"><button class="btn btn--filter" type="button" data-filter="today">Today</button></li>
                 <li class="date-upcoming"><button class="btn btn--filter" type="button" data-filter="upcoming">Upcoming</button></li>
@@ -97,13 +97,6 @@
           </header>
 
           <div id="to-do_list">
-            <div class="to-do">
-              <input class="to-do__check" type="checkbox">
-              <div class="to-do__title">Birthday</div>
-              <div class="to-do__description">Celebrate Rutile's birthday at 13.</div>
-              <div class="to-do__date">30/09/20</div>
-              <div class="to-do__priority"><i class="far fa-bookmark"></i></div>
-            </div>
           </div>
 
           <form class="add add--todo" id="add-todo">
@@ -128,16 +121,16 @@
                   <div class="add-priority hidden" id="add-priority">
 
                     <label for="priority-high" class="priority-high"><i class="far fa-bookmark"></i></label>
-                    <input type="radio" id="priority-high" name="priority-high" value="priority-high">
+                    <input type="radio" id="priority-high" name="priority" value="priority-high">
 
                     <label for="priority-med" class="priority-med"><i class="far fa-bookmark"></i></label>
-                    <input type="radio" id="priority-med" name="priority-med" value="priority-med">
+                    <input type="radio" id="priority-med" name="priority" value="priority-med">
 
                     <label for="priority-low" class="priority-low"><i class="far fa-bookmark"></i></label>
-                    <input type="radio" id="priority-low" name="priority-low" value="priority-low">
+                    <input type="radio" id="priority-low" name="priority" value="priority-low">
                     
                     <label for="priority-none" class="priority-none"><i class="far fa-bookmark"></i></label>
-                    <input type="radio" id="priority-none" name="priority-none" value="priority-none">
+                    <input type="radio" id="priority-none" name="priority" value="priority-none">
 
                   </div>
                 </div>
@@ -145,7 +138,7 @@
             </div>
 
             <div class="add__finish">
-              <button type="button" class="btn btn--submit">Add Task</button>
+              <button type="button" class="btn btn--submit" id="submit-todo">Add Task</button>
               <button type="button" class="btn btn--cancel">Cancel</button>
             </div>
 
