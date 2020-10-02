@@ -26,7 +26,9 @@ export class TodoListView {
   }
 
   get _todoPriority () {
-    return document.querySelector('[name="priority"]:checked').value
+    if (document.querySelector('[name="priority"]:checked')) {
+      return document.querySelector('[name="priority"]:checked').value
+    }
   }
 
   // Reset form inputs
@@ -34,7 +36,10 @@ export class TodoListView {
     this.title.value = ''
     this.description.value = ''
     this.date.value = ''
-    this.priority.checked = false
+
+    if (document.querySelector('[name="priority"]:checked')) {
+      document.querySelector('[name="priority"]:checked').checked = false
+    }
   }
 
   // Render the whole Todo List (used at the loading, and when we delete a Todo)
