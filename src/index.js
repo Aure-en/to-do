@@ -7,7 +7,7 @@ import { Todo } from './Todo'
 const generalList = new TodoListController(new TodoListModel(), new TodoListView())
 
 generalList.model.addTodo(
-  new Todo('Dentist', 'Appointment at 2PM', '', 'high', 'none', 'none', '1')
+  new Todo('Dentist', 'Appointment at 2PM', '', 'high', 'none', 'none')
 )
 
 console.log(generalList.model.todos)

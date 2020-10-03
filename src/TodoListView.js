@@ -42,7 +42,7 @@ export class TodoListView {
     }
   }
 
-  // Render the whole Todo List (used at the loading, and when we delete a Todo)
+  // Render the Todo List
   renderAll (todos) {
     this.todoList.innerHTML = ''
 
@@ -51,17 +51,21 @@ export class TodoListView {
     }
   }
 
-  // Only renders the last Todo of the List (used when we add a Todo)
-  renderLast (todoList) {
-    todoList[todoList.length - 1].render()
-  }
-
   // Event Listeners on the DOM elements
 
   bindAddTodo (handler) {
     this.submit.addEventListener('click', () => {
       handler(new Todo(this._todoTitle, this._todoDescription, this._todoDate, this._todoPriority, '', '', ''))
       this._resetInputs()
+    })
+  }
+
+  bindDeleteTodo (handler) {
+    this.todoList.addEventListener('change', (event) => {
+      if (event.target.classList.contains('to-do__check')) {
+        const id = parseInt(event.target.parentElement.id)
+        handler(id)
+      }
     })
   }
 }

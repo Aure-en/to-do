@@ -4,6 +4,7 @@ export class TodoListController {
     this.view = view
     this.onTodoListChange(this.model.todos)
     this.view.bindAddTodo(this.handleAddTodo.bind(this))
+    this.view.bindDeleteTodo(this.handleDeleteTodo.bind(this))
     this.model.bindTodoListChange(this.onTodoListChange.bind(this))
   }
 
