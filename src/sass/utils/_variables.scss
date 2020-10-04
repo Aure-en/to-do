@@ -25,7 +25,16 @@ $color-date: (
   late: rgb(148, 32, 32)
 );
 
+$color-sort: (
+  title: rgb(48, 92, 48),
+  description: rgb(235, 185, 79),
+  date: rgb(102, 151, 145),
+  priority: map-get($color-priority, high)
+);
+
 // Icons
+
+$icon-priority: "\f02e";
 
 $icons-date: (
   all: "\f073",
@@ -38,6 +47,13 @@ $icons-caret: (
   up: "\f0d8",
   down: "\f0d7",
   right: "\f0da"
+);
+
+$icons-sort: (
+  title: "\f328",
+  description: "\f249",
+  date: "\f073",
+  priority: $icon-priority,
 );
 
 $icon-add: "\f067";

@@ -1,15 +1,41 @@
 import { Todo } from './Todo'
 
 export class TodoListView {
-  constructor () {
-    // Section of the Todo List
-    this.todoList = document.querySelector('#to-do_list')
+  constructor (projectId) {
+    this.project = document.querySelector(`#project-${projectId} .sections`)
+    this.todoList = document.createElement('div')
+    this.todoList.classList.add('todolist')
+    this.id = ++TodoListView.counter
+    this.projectId = projectId
+  }
 
-    // Form to add a Todo to the Todo List
-    this.title = document.querySelector('[name="title"]')
-    this.description = document.querySelector('[name="description"]')
-    this.date = document.querySelector('[name="date"]')
-    this.submit = document.querySelector('#submit-todo')
+  // Create a section
+  createSection () {
+    this.section = document.createElement('div')
+    this.section.classList.add(`section-${this.projectId}-${this.id}`)
+    this.section.prepend(this.todoList)
+    this.project.append(this.section)
+  }
+
+  // Render the section's name
+  renderName (name) {
+    this.name = document.createElement('h2')
+    this.name.classList.add('section__name')
+    this.name.innerHTML = name
+    this.section.prepend(this.name)
+  }
+
+  // Render the Add Todo Form
+  renderForm (form) {
+    form.render(this.section)
+  }
+
+  // Get the Add Todo Form Inputs
+  getForm () {
+    this.title = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form [name="title"]`)
+    this.description = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form [name="description"]`)
+    this.date = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form [name="date"]`)
+    this.submit = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form .btn--submit`)
   }
 
   // Get form values
@@ -43,15 +69,14 @@ export class TodoListView {
   }
 
   // Render the Todo List
-  renderAll (todos) {
+  render (todos) {
     this.todoList.innerHTML = ''
-
     for (const todo of todos) {
       todo.render(this.todoList)
     }
   }
 
-  // Event Listeners on the DOM elements
+  // Event Listeners
 
   bindAddTodo (handler) {
     this.submit.addEventListener('click', () => {
@@ -69,3 +94,5 @@ export class TodoListView {
     })
   }
 }
+
+TodoListView.counter = 0

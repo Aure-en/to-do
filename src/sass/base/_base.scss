@@ -80,5 +80,8 @@ body {
 }
 
 .hidden {
-	display: none !important;
+	opacity: 0;
+	max-height: 0 !important;
+	overflow: hidden;
+  transform: translateY(-.25em);
 }

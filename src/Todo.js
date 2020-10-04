@@ -1,11 +1,9 @@
 export class Todo {
-  constructor (title, description, date = 'N/A', priority = 'none', project = 'default', section = 'default') {
+  constructor (title, description, date = 'N/A', priority = 'none') {
     this.title = title
     this.description = description
     this.date = date
     this.priority = priority
-    this.project = project
-    this.section = section
   }
 
   render (container) {
@@ -13,7 +11,6 @@ export class Todo {
     todoElem.classList.add('to-do')
     todoElem.setAttribute('data-date', this.date)
     todoElem.setAttribute('data-priority', this.priority)
-    todoElem.setAttribute('data-project', this.project)
     todoElem.id = this.id
 
     const todoCheck = document.createElement('input')

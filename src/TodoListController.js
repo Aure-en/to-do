@@ -3,13 +3,11 @@ export class TodoListController {
     this.model = model
     this.view = view
     this.onTodoListChange(this.model.todos)
-    this.view.bindAddTodo(this.handleAddTodo.bind(this))
-    this.view.bindDeleteTodo(this.handleDeleteTodo.bind(this))
     this.model.bindTodoListChange(this.onTodoListChange.bind(this))
   }
 
   onTodoListChange (todos) {
-    this.view.renderAll(todos)
+    this.view.render(todos)
   }
 
   handleAddTodo (todo) {
@@ -22,5 +20,10 @@ export class TodoListController {
 
   handleDeleteTodo (todo) {
     this.model.deleteTodo(todo)
+  }
+
+  bindAll () {
+    this.view.bindAddTodo(this.handleAddTodo.bind(this))
+    this.view.bindDeleteTodo(this.handleDeleteTodo.bind(this))
   }
 }

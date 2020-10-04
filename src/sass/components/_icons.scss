@@ -3,11 +3,13 @@
 .nav {
   &__to-do li:before,
   &__projects li:before,
-  &__filters li:before {
+  &__filters li:before,
+  &__sorts li:before {
     margin: $margin-indent;
   }
 
-  &__to-do li:before {
+  &__to-do li:before,
+  &__sorts li:before {
     @include font-awesome-400();
   }
 
@@ -35,18 +37,8 @@
 }
 
 // Date Icons
-@each $date, $value in $icons-date {
-  .date-#{$date}::before {
-    content: $value;
-  }
-}
-
-// Color Date Icons
-@each $date, $value in $color-date {
-  .date-#{$date}::before {
-    color: $value;
-  }
-}
+@include icon-content('date', $icons-date);
+@include icon-color('date', $color-date);
 
 // Category Icons
 .nav--heading:before {
@@ -55,6 +47,10 @@
   @include font-awesome-700();
   margin-right: .75rem;
 }
+
+// Sort Icons
+@include icon-content('sort', $icons-sort);
+@include icon-color('sort', $color-sort);
 
 // MAIN ICONS
 

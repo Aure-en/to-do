@@ -4,11 +4,17 @@ import { TodoListModel } from './TodoListModel'
 import { TodoListView } from './TodoListView'
 import { Todo } from './Todo'
 
-const generalList = new TodoListController(new TodoListModel(), new TodoListView())
+import { ProjectController } from './ProjectController'
+import { ProjectModel } from './ProjectModel'
+import { ProjectView } from './ProjectView'
 
-generalList.model.addTodo(
-  new Todo('Dentist', 'Appointment at 2PM', '', 'high', 'none', 'none')
-)
+import { AppController } from './AppController'
+import { AppModel } from './AppModel'
+import { AppView } from './AppView'
 
-console.log(generalList.model.todos)
-generalList.view.renderAll(generalList.model.todos)
+const bigProject = new ProjectController(new ProjectModel('big big'), new ProjectView(ProjectModel.counter))
+bigProject.view.renderForm(bigProject.model.form)
+bigProject.view.getForm()
+bigProject.bindAll()
+
+const app = new AppController(new AppModel(), new AppView())
