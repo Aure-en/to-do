@@ -1,0 +1,25 @@
+@mixin font-awesome-400() {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+}
+
+@mixin font-awesome-700() {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+}
+
+@mixin icon-content($target, $map) {
+  @each $key, $icon in $map {
+    .#{$target}-#{$key}::before {
+      content: $icon;
+    }
+  }
+}
+
+@mixin icon-color($target, $map) {
+  @each $key, $color in $map {
+    .#{$target}-#{$key}::before {
+      color: $color;
+    }
+  }
+}

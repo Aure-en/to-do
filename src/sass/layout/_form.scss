@@ -1,0 +1,96 @@
+.add__content {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba($color-primary, .35);
+
+  &--todo {
+    border-radius: 10px;
+    padding: .25rem 1rem;
+  }
+
+  &--project {
+    border-radius: 5px;
+    margin: 0 1rem;
+    padding: .15rem;
+  }
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: .25rem;
+  background: none;
+}
+
+textarea {
+  height: 4rem;
+}
+
+[name="title"] {
+  border-bottom: 1px solid rgba($color-primary, .1);
+}
+
+.add__details {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add__priority {
+  position: relative;
+
+  input[type="radio"] {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.add-priority {
+  position: absolute;
+  display: flex;
+  background: #fff;
+  border: 1px solid rgba($color-primary, .35);
+  padding: .25rem .5rem;
+  justify-content: space-around;
+  left: -10px;
+  top: 1.65rem;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff;
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    z-index: 1;
+  }
+
+  &:after {
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid rgba($color-primary, .35);
+    position: absolute;
+    top: -6px;
+    left: 14px;
+  }
+
+  label {
+    text-align: center;
+    margin: 0 .5rem;
+  }
+}
+
+.add__finish {
+  margin: .5rem 1rem;
+}
+
+.add__content--project {
+  background: rgba(#fff, .5);
+}
+
+label {
+  cursor: pointer;
+}

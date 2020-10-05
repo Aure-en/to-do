@@ -1,0 +1,60 @@
+// NAV-ICONS
+
+.nav {
+  &__to-do li:before,
+  &__projects li:before,
+  &__filters li:before,
+  &__sorts li:before {
+    margin: $margin-indent;
+  }
+
+  &__to-do li:before,
+  &__sorts li:before {
+    @include font-awesome-400();
+  }
+
+  &__projects li:before {
+    content: "⚫";
+    color: $color-projects;
+  }
+
+  .project_list__add:before {
+    content: $icon-add;
+    @include font-awesome-700();
+  }
+
+  &__filters li:before {
+    content: "\f02e";
+    @include font-awesome-400();
+  }
+}
+
+// Color Priority Icons
+@each $level, $color in $color-priority {
+  .priority-#{$level} {
+    color: $color;
+  }
+}
+
+// Date Icons
+@include icon-content('date', $icons-date);
+@include icon-color('date', $color-date);
+
+// Category Icons
+.nav--heading:before {
+  content: map-get($icons-caret, down);
+  color: $color-primary;
+  @include font-awesome-700();
+  margin-right: .75rem;
+}
+
+// Sort Icons
+@include icon-content('sort', $icons-sort);
+@include icon-color('sort', $color-sort);
+
+// MAIN ICONS
+
+.main__header li:before {
+  content: map-get($icons-caret, down);
+  @include font-awesome-700();
+}
