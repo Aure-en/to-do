@@ -1,5 +1,8 @@
 export class AppView {
   constructor () {
+    // Container
+    this.container = document.querySelector('.content')
+
     // Form to create new projects
     this.projectInput = document.querySelector('.add--project [name="name"]')
     this.projectSubmit = document.querySelector('.add--project .btn--submit')
@@ -31,6 +34,7 @@ export class AppView {
 
   bindAddProject (handler) {
     this.projectSubmit.addEventListener('click', () => {
+      this.container.innerHTML = ''
       handler(this._projectName)
       this._resetInput()
     })

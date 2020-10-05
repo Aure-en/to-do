@@ -13,6 +13,8 @@ export class AppController {
 
   handleAddProject (name) {
     const project = new ProjectController(new ProjectModel(name), new ProjectView(ProjectModel.counter))
+    this.model.addProject(project)
+
     project.view.renderName(name)
     project.view.renderBtn(name)
     project.view.renderForm(project.model.form)

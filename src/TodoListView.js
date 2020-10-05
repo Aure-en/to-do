@@ -1,18 +1,17 @@
 import { Todo } from './Todo'
 
 export class TodoListView {
-  constructor (projectId) {
-    this.project = document.querySelector(`#project-${projectId} .sections`)
+  constructor () {
+    this.project = document.querySelector('.sections')
     this.todoList = document.createElement('div')
     this.todoList.classList.add('todolist')
     this.id = ++TodoListView.counter
-    this.projectId = projectId
   }
 
   // Create a section
   createSection () {
     this.section = document.createElement('div')
-    this.section.classList.add(`section-${this.projectId}-${this.id}`)
+    this.section.classList.add(`section-${this.id}`)
     this.section.prepend(this.todoList)
     this.project.append(this.section)
   }
@@ -32,10 +31,10 @@ export class TodoListView {
 
   // Get the Add Todo Form Inputs
   getForm () {
-    this.title = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form [name="title"]`)
-    this.description = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form [name="description"]`)
-    this.date = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form [name="date"]`)
-    this.submit = document.querySelector(`.section-${this.projectId}-${this.id} .todo-form .btn--submit`)
+    this.title = document.querySelector(`.section-${this.id} .todo-form [name="title"]`)
+    this.description = document.querySelector(`.section-${this.id} .todo-form [name="description"]`)
+    this.date = document.querySelector(`.section-${this.id} .todo-form [name="date"]`)
+    this.submit = document.querySelector(`.section-${this.id} .todo-form .btn--submit`)
   }
 
   // Get form values
@@ -80,7 +79,7 @@ export class TodoListView {
 
   bindAddTodo (handler) {
     this.submit.addEventListener('click', () => {
-      handler(new Todo(this._todoTitle, this._todoDescription, this._todoDate, this._todoPriority, '', '', ''))
+      handler(new Todo(this._todoTitle, this._todoDescription, this._todoDate, this._todoPriority))
       this._resetInputs()
     })
   }

@@ -14,7 +14,7 @@ export class TodoForm {
     formBtn.innerHTML = 'Add Task'
 
     const form = document.createElement('form')
-    form.classList.add('add', 'add--todo', 'todo-form', 'dropdown')
+    form.classList.add('add', 'add--todo', 'todo-form', 'dropdown', 'hidden')
     form.setAttribute('id', `add-todo-${this.id}`)
 
     const content = document.createElement('div')
@@ -100,6 +100,7 @@ export class TodoForm {
 
   // Enable form toggle
   bindToggle (handler) {
+    console.log(this.id)
     this.toggleBtn = [document.querySelector(`[data-toggle="add-priority-${this.id}"]`), document.querySelector(`[data-toggle="add-todo-${this.id}"]`)]
     this.toggleBtn.forEach(toggleBtn => toggleBtn.addEventListener('click', handler))
   }

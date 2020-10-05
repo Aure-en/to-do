@@ -8,35 +8,59 @@ button {
   }
 }
 
-.btn {
-
-  &--submit,
-  &--cancel {
-    padding: .15rem .5rem;
-  }
+.btn--submit,
+.btn--cancel {
+  padding: .15rem .5rem;
+}
   
-  &--submit {
-    background: rgba($color-primary, .5);
-    border-radius: 5px;
-    margin-right: .25rem;
+.btn--submit {
+  background: rgba($color-primary, .5);
+  border-radius: 5px;
+  margin-right: .25rem;
 
-    &:hover {
-      background: rgba($color-primary, .7);
-    }
+  &:hover {
+    background: rgba($color-primary, .7);
+  }
+}
 
+.btn--cancel {
+  border: 1px solid rgba($color-primary, .5);
+  border-radius: 5px;
+  background: rgba(#fff, .5);
+}
+
+.btn--add:before {
+  content: $icon-add;
+  color: rgba($color-primary, .5);
+  @include font-awesome-700();
+  margin: 0 1rem;
+}
+
+.btn--section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+
+  &:before,
+  &:after {
+    content: '';
+    background-color: rgba($color-primary, .25);
+    height: 2px;
+    flex-grow: 1;
   }
 
-  &--cancel {
-    border: 1px solid rgba($color-primary, .5);
-    border-radius: 5px;
-    background: rgba(#fff, .5);
+  &:hover:before,
+  &:hover:after {
+    background-color: rgba($color-primary, .5);
   }
 
-  &--add:before {
-    content: $icon-add;
-    color: rgba($color-primary, .5);
-    @include font-awesome-700();
-    margin: 0 1rem;
+  &:before {
+    margin-right: 1rem;
+  }
+
+  &:after {
+    margin-left: 1rem;
   }
 
 }
