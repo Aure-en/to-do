@@ -4,11 +4,7 @@ export class TodoListModel {
   constructor (name) {
     this.name = name
     this.todos = []
-<<<<<<< HEAD
     this.form = new TodoForm()
-=======
-    this.form = new TodoForm(this.id)
->>>>>>> a0ce1e5ebf045db65c99f2b5f13a542caf6ee825
   }
 
   addTodo (todo) {

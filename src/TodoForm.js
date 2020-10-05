@@ -1,5 +1,4 @@
 export class TodoForm {
-<<<<<<< HEAD
   constructor () {
     this.id = ++TodoForm.counter
   }
@@ -17,16 +16,6 @@ export class TodoForm {
     const form = document.createElement('form')
     form.classList.add('add', 'add--todo', 'todo-form', 'dropdown')
     form.setAttribute('id', `add-todo-${this.id}`)
-=======
-  constructor (projectId, id) {
-    this.projectId = projectId
-    this.id = id
-  }
-
-  render (container) {
-    const form = document.createElement('form')
-    form.classList.add('add', 'add--todo', 'todo-form')
->>>>>>> a0ce1e5ebf045db65c99f2b5f13a542caf6ee825
 
     const content = document.createElement('div')
     content.classList.add('add__content', 'add__content--todo')
@@ -62,22 +51,14 @@ export class TodoForm {
     priorityBtn.innerHTML = '<i class="far fa-bookmark"></i>'
 
     const priorities = document.createElement('div')
-<<<<<<< HEAD
     priorities.classList.add('add-priority', 'dropdown', 'hidden')
-=======
-    priorities.classList.add('add-priority')
->>>>>>> a0ce1e5ebf045db65c99f2b5f13a542caf6ee825
     priorities.setAttribute('id', `add-priority-${this.id}`)
     const prioritiesList = ['high', 'med', 'low', 'none']
 
     for (const priority of prioritiesList) {
       const labelPriority = document.createElement('label')
       labelPriority.setAttribute('for', `priority-${priority}-${this.id}`)
-<<<<<<< HEAD
       labelPriority.classList.add(`priority-${priority}`, `priority-${this.id}`)
-=======
-      labelPriority.classList.add(`priority-${priority}`)
->>>>>>> a0ce1e5ebf045db65c99f2b5f13a542caf6ee825
       labelPriority.innerHTML = '<i class="far fa-bookmark"></i>'
 
       const inputPriority = document.createElement('input')
@@ -109,7 +90,6 @@ export class TodoForm {
     content.append(labelTitle, labelDescription, details)
     details.append(labelDate, priorityContainer)
     form.append(content, finish)
-<<<<<<< HEAD
     formContainer.append(formBtn, form)
     container.append(formContainer)
 
@@ -150,8 +130,3 @@ export class TodoForm {
 }
 
 TodoForm.counter = 0
-=======
-    container.append(form)
-  }
-}
->>>>>>> a0ce1e5ebf045db65c99f2b5f13a542caf6ee825
