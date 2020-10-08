@@ -73,3 +73,16 @@ button {
   display: none;
   color: rgba($color-primary, .5);
 }
+
+.btn--edit {
+  position: absolute;
+  right: -5px;
+  bottom: 0;
+  color: rgba($color-primary, .5);
+  display: none;
+
+  &:hover {
+    color: rgba($color-primary, .75);
+  }
+
+}

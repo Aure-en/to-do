@@ -5,7 +5,7 @@ export class TodoListModel {
     this.name = name === '' ? 'Untitled' : name
     this.todos = []
     this.id = ++TodoListModel.counter
-    this.form = new TodoForm(this.id)
+    this.form = new TodoForm('add', this.id)
   }
 
   addTodo (todo) {

@@ -1,12 +1,18 @@
 .to-do {
   display: grid;
   grid-template-columns: auto 6.5rem 1fr 6.5rem 2rem;
+  grid-auto-flow: column;
   grid-gap: 1rem;
   align-items: start;
   word-break: break-all;
+  position: relative;
   
   &__check {
     margin-top: 7px;
+  }
+
+  &:hover .btn--edit {
+    display: initial;
   }
 
 }

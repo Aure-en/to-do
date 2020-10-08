@@ -1,21 +1,22 @@
 export class TodoForm {
-  constructor () {
-    this.id = ++TodoForm.counter
+  constructor (goal, id) {
+    this.goal = goal
+    this.id = id
   }
 
   render (container) {
     const formContainer = document.createElement('div')
-    formContainer.classList.add('add__todo')
+    formContainer.classList.add(`${this.goal}__todo`)
 
     const formBtn = document.createElement('button')
-    formBtn.classList.add('btn', 'btn--dropdown', 'btn--add')
+    formBtn.classList.add('btn', 'btn--dropdown', `btn--${this.goal}`)
     formBtn.setAttribute('type', 'button')
-    formBtn.setAttribute('data-toggle', `add-todo-${this.id}`)
-    formBtn.innerHTML = 'Add Task'
+    formBtn.setAttribute('data-toggle', `${this.goal}-todo-${this.id}`)
+    formBtn.innerHTML = `${this.goal.slice(0, 1).toUpperCase() + this.goal.slice(1)} Task`
 
     const form = document.createElement('form')
     form.classList.add('add', 'add--todo', 'todo-form', 'dropdown', 'hidden')
-    form.setAttribute('id', `add-todo-${this.id}`)
+    form.setAttribute('id', `${this.goal}-todo-${this.id}`)
 
     const content = document.createElement('div')
     content.classList.add('add__content', 'add__content--todo')
