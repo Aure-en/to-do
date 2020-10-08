@@ -1,6 +1,6 @@
 export class TodoForm {
-  constructor (id) {
-    this.id = id
+  constructor () {
+    this.id = ++TodoForm.counter
   }
 
   render (container) {
