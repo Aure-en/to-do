@@ -24,7 +24,7 @@ export class ProjectView {
     this.button.setAttribute('data-filter', `project-${this.id}`)
     this.button.innerHTML = name
     this.li.append(this.button)
-    document.querySelector('#projects_list').append(this.li)
+    document.querySelector('.projects').append(this.li)
   }
 
   // Render the add section form

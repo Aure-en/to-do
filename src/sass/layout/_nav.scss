@@ -4,6 +4,11 @@
   width: 250px;
   border-right: 1px solid rgba($color-primary, .25);
   padding: 2rem .25rem 0 2rem;
+  transition: all .2s ease-in;
+
+  &--hidden {
+    transform: translateX(-100%);
+  }
 
   &__category {
     margin-bottom: .75rem;
@@ -37,5 +42,4 @@
       background: rgba($color-primary, .07);
     }
   }
-
 }

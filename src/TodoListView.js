@@ -92,6 +92,11 @@ export class TodoListView {
       }
     })
   }
+
+  bindPriority (handler) {
+    
+  }
+
 }
 
 TodoListView.counter = 0

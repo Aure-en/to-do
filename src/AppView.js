@@ -1,7 +1,8 @@
 export class AppView {
   constructor () {
-    // Container
     this.container = document.querySelector('.content')
+    this.homeBtn = document.querySelector('.btn--home')
+    this.main = document.querySelector('main')
 
     // Form to create new projects
     this.projectInput = document.querySelector('.add--project [name="name"]')
@@ -14,9 +15,11 @@ export class AppView {
     this.sortPriority = document.querySelector('#sort-priority')
 
     // Filter tasks
+    this.priorityBtn = document.querySelectorAll('[data-filter^="priority"]')
 
     // Toggle Navigation
     this.navBtn = document.querySelector('[data-toggle="nav"]')
+    this.nav = document.querySelector('.nav')
 
     // Toggle categories
     this.toggleBtn = document.querySelectorAll('.btn--dropdown')
@@ -41,5 +44,13 @@ export class AppView {
 
   bindToggle (handler) {
     this.toggleBtn.forEach(toggleBtn => toggleBtn.addEventListener('click', handler))
+  }
+
+  bindNavToggle (handler) {
+    this.navBtn.addEventListener('click', handler)
+  }
+
+  bindPriority (handler) {
+    this.priorityBtn.forEach(priorityBtn => priorityBtn.addEventListener('click', (event) => handler(event.target.dataset.filter.slice(9))))
   }
 }
