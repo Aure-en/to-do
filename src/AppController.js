@@ -11,6 +11,7 @@ export class AppController {
     this.view.bindToggle(this.handleToggle.bind(this))
     this.view.bindNavToggle(this.handleNavToggle.bind(this))
     this.view.bindPriority(this.handlePriority.bind(this))
+    this.view.bindDisplayAll(this.handleDisplayAll.bind(this))
   }
 
   // Display the new project and created a button linked to the project in the navigation.
@@ -47,7 +48,6 @@ export class AppController {
   }
 
   // Enable priority filters
-
   handlePriority (priority) {
     const todos = document.querySelectorAll('.to-do')
     todos.forEach(todo => {
@@ -57,5 +57,11 @@ export class AppController {
         todo.classList.remove('no-display')
       }
     })
+  }
+
+  // Disable filters
+  handleDisplayAll () {
+    const todos = document.querySelectorAll('.to-do')
+    todos.forEach(todo => todo.classList.remove('no-display'))
   }
 }

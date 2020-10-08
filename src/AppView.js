@@ -15,6 +15,7 @@ export class AppView {
     this.sortPriority = document.querySelector('#sort-priority')
 
     // Filter tasks
+    this.displayAllBtn = document.querySelectorAll('[data-filter="all"]')
     this.priorityBtn = document.querySelectorAll('[data-filter^="priority"]')
 
     // Toggle Navigation
@@ -52,5 +53,9 @@ export class AppView {
 
   bindPriority (handler) {
     this.priorityBtn.forEach(priorityBtn => priorityBtn.addEventListener('click', (event) => handler(event.target.dataset.filter.slice(9))))
+  }
+
+  bindDisplayAll (handler) {
+    this.displayAllBtn.forEach(displayAllBtn => displayAllBtn.addEventListener('click', handler))
   }
 }
