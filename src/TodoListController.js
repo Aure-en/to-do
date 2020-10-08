@@ -18,8 +18,8 @@ export class TodoListController {
     this.model.editTodo(todo, field, update)
   }
 
-  handleDeleteTodo (todo) {
-    this.model.deleteTodo(todo)
+  handleDeleteTodo (id) {
+    this.model.deleteTodo(id)
   }
 
   bindAll () {

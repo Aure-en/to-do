@@ -11,6 +11,7 @@ export class AppController {
     this.view = view
 
     this.view.bindAddProject(this.handleAddProject.bind(this))
+    this.view.bindDeleteProject(this.handleDeleteProject.bind(this))
     this.view.bindToggle(this.handleToggle.bind(this))
     this.view.bindNavToggle(this.handleNavToggle.bind(this))
     this.view.bindPriority(this.handlePriority.bind(this))
@@ -22,7 +23,7 @@ export class AppController {
 
   // Display the new project and created a button linked to the project in the navigation.
   handleAddProject (name) {
-    const project = new ProjectController(new ProjectModel(name), new ProjectView(ProjectModel.counter++))
+    const project = new ProjectController(new ProjectModel(name), new ProjectView(ProjectModel.counter))
     this.model.addProject(project)
 
     project.model.addTodoList(new TodoListController(new TodoListModel('Default'), new TodoListView()))
@@ -32,7 +33,7 @@ export class AppController {
     project.view.getForm()
     project.bindAll()
     this.view.renderBtn(name, project.model.id)
-    document.querySelector(`.project-${project.model.id}`).addEventListener('click', () => this.handleNavClick(project))
+    document.querySelector(`[data-project="project-${project.model.id}"]`).addEventListener('click', () => this.handleNavClick(project))
   }
 
   // Links the newly created navigation button to its project
@@ -42,6 +43,14 @@ export class AppController {
     project.view.renderForm(project.model.form)
     project.view.getForm()
     project.bindAll()
+  }
+
+  // When a project is deleted, it is removed from the model and from the navigation.
+  // The Homepage is displayed instead.
+  handleDeleteProject (id) {
+    this.model.deleteProject(id)
+    document.querySelector(`[data-project="project-${id}"]`).remove()
+    document.querySelector('[data-project="project-1"]').dispatchEvent(new Event('click'))
   }
 
   // Enable all toggle buttons

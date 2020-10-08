@@ -58,10 +58,4 @@ export class ProjectView {
       this._resetInput()
     })
   }
-
-  bindDeleteProject (handler) {
-    this.closeBtn.addEventListener('click', (event) => {
-      event.target.closest('li').remove()
-    })
-  }
 }

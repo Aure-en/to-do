@@ -42,7 +42,8 @@ export class AppView {
   // Render the navigation button linked to the project
   renderBtn (name, id) {
     const li = document.createElement('li')
-    li.classList.add('btn--project', `project-${id}`)
+    li.classList.add('btn--project')
+    li.setAttribute('data-project', `project-${id}`)
 
     const button = document.createElement('button')
     button.classList.add('btn', 'btn--filter')
@@ -63,6 +64,17 @@ export class AppView {
     this.projectSubmit.addEventListener('click', () => {
       handler(this._projectName)
       this._resetInput()
+    })
+  }
+
+  bindDeleteProject (handler) {
+    this.nav.addEventListener('click', (event) => {
+      if (!event.target.closest('button')) return
+
+      if (event.target.closest('button').classList.contains('btn--delete')) {
+        const id = event.target.closest('li').dataset.project.slice(8)
+        handler(id)
+      }
     })
   }
 
