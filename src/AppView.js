@@ -17,6 +17,9 @@ export class AppView {
     // Filter tasks
     this.displayAllBtn = document.querySelectorAll('[data-filter="all"]')
     this.priorityBtn = document.querySelectorAll('[data-filter^="priority"]')
+    this.dateTodayBtn = document.querySelector('[data-filter="date-today"]')
+    this.dateUpcomingBtn = document.querySelector('[data-filter="date-upcoming"]')
+    this.dateAnytimeBtn = document.querySelector('[data-filter="date-anytime"]')
 
     // Toggle Navigation
     this.navBtn = document.querySelector('[data-toggle="nav"]')
@@ -43,19 +46,33 @@ export class AppView {
     })
   }
 
+  // Navigation toggles
   bindToggle (handler) {
-    this.toggleBtn.forEach(toggleBtn => toggleBtn.addEventListener('click', handler))
+    this.toggleBtn.forEach((toggleBtn) => toggleBtn.addEventListener('click', handler))
   }
 
   bindNavToggle (handler) {
     this.navBtn.addEventListener('click', handler)
   }
 
+  // Filters
   bindPriority (handler) {
-    this.priorityBtn.forEach(priorityBtn => priorityBtn.addEventListener('click', (event) => handler(event.target.dataset.filter.slice(9))))
+    this.priorityBtn.forEach((priorityBtn) => priorityBtn.addEventListener('click', (event) => handler(event.target.dataset.filter.slice(9))))
+  }
+
+  bindDateToday (handler) {
+    this.dateTodayBtn.addEventListener('click', handler)
+  }
+
+  bindDateUpcoming (handler) {
+    this.dateUpcomingBtn.addEventListener('click', handler)
+  }
+
+  bindDateAnytime (handler) {
+    this.dateAnytimeBtn.addEventListener('click', handler)
   }
 
   bindDisplayAll (handler) {
-    this.displayAllBtn.forEach(displayAllBtn => displayAllBtn.addEventListener('click', handler))
+    this.displayAllBtn.forEach((displayAllBtn) => displayAllBtn.addEventListener('click', handler))
   }
 }
