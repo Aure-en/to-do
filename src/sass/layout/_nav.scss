@@ -26,7 +26,11 @@
         background: rgba($color-primary, .04);
       }
 
-      button {
+      &:hover .btn--delete {
+        display: initial;
+      }
+
+      > .btn {
         // Makes the whole line clickable instead of just the text.
         flex: 1;
         text-align: start;

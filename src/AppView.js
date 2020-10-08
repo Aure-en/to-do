@@ -39,6 +39,26 @@ export class AppView {
     this.projectInput.value = ''
   }
 
+  // Render the navigation button linked to the project
+  renderBtn (name, id) {
+    const li = document.createElement('li')
+    li.classList.add('btn--project', `project-${id}`)
+
+    const button = document.createElement('button')
+    button.classList.add('btn', 'btn--filter')
+    button.setAttribute('type', 'button')
+    button.setAttribute('data-filter', `project-${id}`)
+    button.innerHTML = name
+
+    const closeBtn = document.createElement('button')
+    closeBtn.classList.add('btn--delete')
+    closeBtn.setAttribute('type', 'button')
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>'
+
+    li.append(button, closeBtn)
+    document.querySelector('.projects').append(li)
+  }
+
   bindAddProject (handler) {
     this.projectSubmit.addEventListener('click', () => {
       handler(this._projectName)

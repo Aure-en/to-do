@@ -62,5 +62,14 @@ button {
   &:after {
     margin-left: 1rem;
   }
+}
 
+.btn--project {
+  display: flex;
+  justify-content: space-between
+}
+
+.btn--delete {
+  display: none;
+  color: rgba($color-primary, .5);
 }

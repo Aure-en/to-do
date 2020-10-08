@@ -4,6 +4,7 @@ export class Todo {
     this.description = description
     this.date = date
     this.priority = priority
+    this.id = ++Todo.counter
   }
 
   render (container) {
@@ -34,3 +35,5 @@ export class Todo {
     container.append(todoElem)
   }
 }
+
+Todo.counter = 0

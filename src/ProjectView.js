@@ -15,18 +15,6 @@ export class ProjectView {
     this.name.innerHTML = name
   }
 
-  // Render the navigation button linked to the project
-  renderBtn (name) {
-    this.li = document.createElement('li')
-    this.button = document.createElement('button')
-    this.button.classList.add('btn', 'btn--filter')
-    this.button.setAttribute('type', 'button')
-    this.button.setAttribute('data-filter', `project-${this.id}`)
-    this.button.innerHTML = name
-    this.li.append(this.button)
-    document.querySelector('.projects').append(this.li)
-  }
-
   // Render the add section form
   renderForm (form) {
     form.render()
@@ -68,6 +56,12 @@ export class ProjectView {
     this.submit.addEventListener('click', () => {
       handler(new TodoListController(new TodoListModel(this._sectionName, this.id), new TodoListView(this.id)))
       this._resetInput()
+    })
+  }
+
+  bindDeleteProject (handler) {
+    this.closeBtn.addEventListener('click', (event) => {
+      event.target.closest('li').remove()
     })
   }
 }
