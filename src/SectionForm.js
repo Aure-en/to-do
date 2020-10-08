@@ -3,9 +3,9 @@ export class SectionForm {
     this.id = id
   }
 
-  render (container) {
-    const formContainer = document.createElement('div')
-    formContainer.classList.add('add__section')
+  render () {
+    const formContainer = document.querySelector('.add__section')
+    formContainer.innerHTML = ''
 
     const formBtn = document.createElement('button')
     formBtn.classList.add('btn', 'btn--dropdown', 'btn--section')
@@ -44,7 +44,6 @@ export class SectionForm {
     finish.append(submitBtn, cancelBtn)
     form.append(content, finish)
     formContainer.append(formBtn, form)
-    container.append(formContainer)
 
     this.bindToggle(this.handleToggle)
   }

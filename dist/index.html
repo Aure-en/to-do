@@ -27,17 +27,6 @@
 
       <nav class="nav">
         <ul>
-          <li class="nav__category">
-            <div class="nav__to-do">
-              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="to-do_dates">Tasks</button>
-              <ul class="dropdown" id="to-do_dates">
-                <li class="date-all"><button class="btn btn--filter" type="button" data-filter="all">All</button></li>
-                <li class="date-today"><button class="btn btn--filter" type="button" data-filter="today">Today</button></li>
-                <li class="date-upcoming"><button class="btn btn--filter" type="button" data-filter="upcoming">Upcoming</button></li>
-                <li class="date-anytime"><button class="btn btn--filter" type="button" data-filter="anytime">Anytime</button></li>
-              </ul>
-            </div>
-          </li>
 
           <li class="nav__category">
             <div class="nav__projects">
@@ -76,8 +65,20 @@
           </li>
 
           <li class="nav__category">
+            <div class="nav__to-do">
+              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="to-do_dates">Date</button>
+              <ul class="dropdown" id="to-do_dates">
+                <li class="date-all"><button class="btn btn--filter" type="button" data-filter="all">All</button></li>
+                <li class="date-today"><button class="btn btn--filter" type="button" data-filter="today">Today</button></li>
+                <li class="date-upcoming"><button class="btn btn--filter" type="button" data-filter="upcoming">Upcoming</button></li>
+                <li class="date-anytime"><button class="btn btn--filter" type="button" data-filter="anytime">Anytime</button></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav__category">
             <div class="nav__filters">
-              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="filters_list">Filters</button>
+              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="filters_list">Priority</button>
               <ul class="dropdown" id="filters_list">
                 <li class="priority-high"><button class="btn btn--filter" type="button" data-filter="priority1">High Priority</button></li>
                 <li class="priority-medium"><button class="btn btn--filter" type="button" data-filter="priority2">Medium Priority</button></li>
@@ -93,7 +94,11 @@
 
         <div class="content">
 
-          <h1 id="project-name">All</h1>
+          <h1 class="project__name"></h1>
+
+          <div class="sections"></div>
+
+          <div class="add__section"></div>
           
         </div>
 

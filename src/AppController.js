@@ -20,6 +20,14 @@ export class AppController {
     project.view.renderForm(project.model.form)
     project.view.getForm()
     project.bindAll()
+
+    project.view.button.addEventListener('click', () => {
+      project.view.renderName(name)
+      project.view.render(project.model.todoLists)
+      project.view.renderForm(project.model.form)
+      project.view.getForm()
+      project.bindAll()
+    })
   }
 
   handleToggle (event) {

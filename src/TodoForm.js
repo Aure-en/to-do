@@ -1,6 +1,6 @@
 export class TodoForm {
-  constructor () {
-    this.id = ++TodoForm.counter
+  constructor (id) {
+    this.id = id
   }
 
   render (container) {
@@ -100,7 +100,6 @@ export class TodoForm {
 
   // Enable form toggle
   bindToggle (handler) {
-    console.log(this.id)
     this.toggleBtn = [document.querySelector(`[data-toggle="add-priority-${this.id}"]`), document.querySelector(`[data-toggle="add-todo-${this.id}"]`)]
     this.toggleBtn.forEach(toggleBtn => toggleBtn.addEventListener('click', handler))
   }

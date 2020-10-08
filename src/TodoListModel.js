@@ -1,10 +1,11 @@
 import { TodoForm } from './TodoForm'
 
 export class TodoListModel {
-  constructor (name) {
+  constructor (name, id) {
     this.name = name
     this.todos = []
-    this.form = new TodoForm()
+    this.form = new TodoForm(id)
+    this.id = id
   }
 
   addTodo (todo) {

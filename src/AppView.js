@@ -34,7 +34,6 @@ export class AppView {
 
   bindAddProject (handler) {
     this.projectSubmit.addEventListener('click', () => {
-      this.container.innerHTML = ''
       handler(this._projectName)
       this._resetInput()
     })

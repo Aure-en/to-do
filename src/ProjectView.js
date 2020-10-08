@@ -5,21 +5,14 @@ import { TodoListView } from './TodoListView'
 export class ProjectView {
   constructor (id) {
     this.container = document.querySelector('.content')
-    this.project = document.createElement('div')
-    this.project.setAttribute('id', `project-${id}`)
-    this.sections = document.createElement('div')
-    this.sections.classList.add('sections')
-    this.project.append(this.sections)
-    this.container.append(this.project)
+    this.sections = document.querySelector('.sections')
+    this.name = document.querySelector('.project__name')
     this.id = id
   }
 
   // Render the name of the project
   renderName (name) {
-    this.name = document.createElement('h1')
-    this.name.classList.add('project__name')
     this.name.innerHTML = name
-    this.project.prepend(this.name)
   }
 
   // Render the navigation button linked to the project
@@ -36,23 +29,23 @@ export class ProjectView {
 
   // Render the add section form
   renderForm (form) {
-    form.render(this.project)
+    form.render()
   }
 
   // Get the add section form inputs
   getForm () {
-    this.name = document.querySelector(`#section-form-${this.id} [name="section"]`)
+    this.nameInput = document.querySelector(`#section-form-${this.id} [name="section"]`)
     this.submit = document.querySelector(`#section-form-${this.id} .btn--submit`)
   }
 
   // Get Section's Name from the form
   get _sectionName () {
-    return this.name.value
+    return this.nameInput.value
   }
 
   // Reset form input
   _resetInput () {
-    this.name.value = ''
+    this.nameInput.value = ''
   }
 
   // Render the project by rendering every section
