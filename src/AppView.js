@@ -87,6 +87,11 @@ export class AppView {
     this.navBtn.addEventListener('click', handler)
   }
 
+  // Home page
+  bindHome (handler) {
+    this.homeBtn.addEventListener('click', handler)
+  }
+
   // Filters
   bindPriority (handler) {
     this.priorityBtn.forEach((priorityBtn) => priorityBtn.addEventListener('click', (event) => handler(event.target.dataset.filter.slice(9))))

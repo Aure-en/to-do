@@ -19,6 +19,7 @@ export class AppController {
     this.view.bindDateToday(this.handleToday.bind(this))
     this.view.bindDateUpcoming(this.handleUpcoming.bind(this))
     this.view.bindDateAnytime(this.handleAnytime.bind(this))
+    this.view.bindHome(this.handleHome.bind(this))
   }
 
   // Display the new project and created a button linked to the project in the navigation.
@@ -128,5 +129,10 @@ export class AppController {
   handleDisplayAll () {
     const todos = document.querySelectorAll('.to-do')
     todos.forEach(todo => todo.classList.remove('no-display'))
+  }
+
+  // Home page
+  handleHome () {
+    document.querySelector('[data-project="project-1"]').dispatchEvent(new Event('click'))
   }
 }
