@@ -1,11 +1,11 @@
 import { TodoForm } from './TodoForm'
 
 export class TodoListModel {
-  constructor (name, id) {
-    this.name = name
+  constructor (name) {
+    this.name = name === '' ? 'Untitled' : name
     this.todos = []
-    this.form = new TodoForm(id)
-    this.id = id
+    this.id = ++TodoListModel.counter
+    this.form = new TodoForm(this.id)
   }
 
   addTodo (todo) {
@@ -32,3 +32,5 @@ export class TodoListModel {
     this.onTodoListChange = callback
   }
 }
+
+TodoListModel.counter = 0

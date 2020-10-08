@@ -2,7 +2,7 @@ import { SectionForm } from './SectionForm'
 
 export class ProjectModel {
   constructor (name) {
-    this.name = name
+    this.name = name === '' ? 'Untitled' : name
     this.id = ++ProjectModel.counter
     this.todoLists = []
     this.form = new SectionForm(this.id)

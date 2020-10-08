@@ -1,6 +1,9 @@
 import { ProjectController } from './ProjectController'
 import { ProjectModel } from './ProjectModel'
 import { ProjectView } from './ProjectView'
+import { TodoListController } from './TodoListController'
+import { TodoListModel } from './TodoListModel'
+import { TodoListView } from './TodoListView'
 
 export class AppController {
   constructor (model, view) {
@@ -19,14 +22,17 @@ export class AppController {
 
   // Display the new project and created a button linked to the project in the navigation.
   handleAddProject (name) {
-    const project = new ProjectController(new ProjectModel(name), new ProjectView(ProjectModel.counter))
+    const project = new ProjectController(new ProjectModel(name), new ProjectView(ProjectModel.counter++))
     this.model.addProject(project)
 
+    project.model.addTodoList(new TodoListController(new TodoListModel('Default'), new TodoListView()))
     project.view.renderName(name)
+    project.view.render(project.model.todoLists)
     project.view.renderBtn(name)
     project.view.renderForm(project.model.form)
     project.view.getForm()
     project.bindAll()
+
     project.view.button.addEventListener('click', () => this.handleNavClick(project))
   }
 
