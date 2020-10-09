@@ -11,38 +11,67 @@ export class Todo {
   }
 
   render (container) {
-    const todoElem = document.createElement('div')
-    todoElem.classList.add('to-do')
-    todoElem.setAttribute('data-date', this.date)
-    todoElem.setAttribute('data-priority', this.priority)
-    todoElem.id = this.id
+    this.todoElem = document.createElement('div')
+    this.todoElem.classList.add('to-do')
+    this.todoElem.setAttribute('data-date', this.date)
+    this.todoElem.setAttribute('data-priority', this.priority)
+    this.todoElem.id = this.id
 
     const todoCheck = document.createElement('input')
     todoCheck.classList.add('to-do__check')
     todoCheck.setAttribute('type', 'checkbox')
-    todoElem.append(todoCheck)
+    this.todoElem.append(todoCheck)
 
     const components = ['title', 'description', 'date']
     for (const component of components) {
       const todoComponent = document.createElement('div')
       todoComponent.classList.add(`to-do__${component}`)
       todoComponent.innerHTML = this[component]
-      todoElem.append(todoComponent)
+      this.todoElem.append(todoComponent)
     }
 
     const todoPriority = document.createElement('div')
     todoPriority.classList.add('to-do__priority', `priority-${this.priority}`)
     todoPriority.innerHTML = '<i class="far fa-bookmark"></i>'
-    todoElem.append(todoPriority)
+    this.todoElem.append(todoPriority)
 
-    const todoEdit = document.createElement('button')
-    todoEdit.classList.add('btn', 'btn--toggle', 'btn--edit')
-    todoEdit.setAttribute('type', 'button')
-    todoEdit.setAttribute('data-toggle', `edit-todo-${this.id}`)
-    todoEdit.innerHTML = '<i class="fas fa-pencil-alt"></i>'
-    todoElem.append(todoEdit)
+    this.todoEdit = document.createElement('button')
+    this.todoEdit.classList.add('btn', 'btn--toggle', 'btn--edit')
+    this.todoEdit.setAttribute('type', 'button')
+    this.todoEdit.setAttribute('data-toggle', `edit-todo-${this.id}`)
+    this.todoEdit.innerHTML = '<i class="fas fa-pencil-alt"></i>'
+    this.todoElem.append(this.todoEdit)
 
-    container.append(todoElem)
+    container.append(this.todoElem)
+
+    this.bindTodoEdit(this.handleTodoEdit.bind(this))
+  }
+
+  // Open the Edit Form when we click on the pen icon.
+  bindTodoEdit (handler) {
+    this.todoEdit.addEventListener('click', handler)
+  }
+
+  handleTodoEdit () {
+    if (document.querySelector(`#edit-todo-${this.id}`)) return
+    this.editForm.renderEdit(this.todoElem)
+    this._getEdit()
+    this._setEdit()
+  }
+
+  // Get the Todo values and insert them in the form to make editing easier.
+  _getEdit () {
+    this.titleInput = document.querySelector(`#edit-todo-${this.id} [name="title"]`)
+    this.descriptionInput = document.querySelector(`#edit-todo-${this.id} [name="description"]`)
+    this.dateInput = document.querySelector(`#edit-todo-${this.id} [name="date"]`)
+    this.priorityInput = document.querySelector(`#edit-todo-${this.id} [data-toggle^="add-priority"]`)
+  }
+
+  _setEdit () {
+    this.titleInput.value = this.title
+    this.descriptionInput.value = this.description
+    this.dateInput.value = this.date
+    this.priorityInput.classList.add(`priority-${this.priority}`)
   }
 }
 

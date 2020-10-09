@@ -1,4 +1,5 @@
-.add__content {
+.add__content,
+.edit__content {
   display: flex;
   flex-direction: column;
   border: 1px solid rgba($color-primary, .35);
@@ -30,12 +31,14 @@ textarea {
   border-bottom: 1px solid rgba($color-primary, .1);
 }
 
-.add__details {
+.add__details,
+.edit__details {
   display: flex;
   justify-content: flex-end;
 }
 
-.add__priority {
+.add__priority,
+.edit__priority {
   position: relative;
 
   input[type="radio"] {
@@ -83,7 +86,8 @@ textarea {
   }
 }
 
-.add__finish {
+.add__finish,
+.edit__finish {
   margin: .5rem 1rem;
 }
 

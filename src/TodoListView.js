@@ -26,7 +26,7 @@ export class TodoListView {
 
   // Render the Add Todo Form
   renderForm (form) {
-    form.render(this.section)
+    form.renderAdd(this.section)
   }
 
   // Get the Add Todo Form Inputs
