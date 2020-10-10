@@ -24,12 +24,12 @@ export class TodoListView {
     this.section.prepend(this.name)
   }
 
-  // Render the Add Todo Form
+  // Render the Add form
   renderForm (form) {
     form.renderAdd(this.section)
   }
 
-  // Get the Add Todo Form Inputs
+  // Get the Add form inputs
   getForm () {
     this.title = document.querySelector(`.section-${this.id} .todo-form [name="title"]`)
     this.description = document.querySelector(`.section-${this.id} .todo-form [name="description"]`)
@@ -37,7 +37,7 @@ export class TodoListView {
     this.submit = document.querySelector(`.section-${this.id} .todo-form .btn--submit`)
   }
 
-  // Get addform values
+  // Get add form values
   get _todoTitle () {
     return this.title.value
   }
@@ -56,15 +56,31 @@ export class TodoListView {
     }
   }
 
+  // Get the Edit form inputs
+  getEditForm (id) {
+    this.titleEdit = document.querySelector(`#edit-todo-${id} [name="title"]`)
+    this.descriptionEdit = document.querySelector(`#edit-todo-${id} [name="description"]`)
+    this.dateEdit = document.querySelector(`#edit-todo-${id} [name="date"]`)
+    this.priorityEdit = document.querySelector(`#edit-todo-${id} .btn--toggle`)
+  }
+
+  // Automatically pre-fill the Edit form inputs
+  setEditForm (id) {
+    this.titleEdit.value = document.querySelector(`[id="${id}"] .to-do__title`).innerHTML
+    this.descriptionEdit.value = document.querySelector(`[id="${id}"] .to-do__description`).innerHTML
+    this.dateEdit.value = document.querySelector(`[id="${id}"] .to-do__date`).innerHTML
+    this.priorityEdit.classList.add(document.querySelector(`[id="${id}"] .to-do__priority`).classList[1])
+    document.querySelector(`#edit-todo-${id} [id^="${document.querySelector(`[id="${id}"] .to-do__priority`).classList[1]}"]`).checked = true
+  }
+
+  // Get the Edit form values
+
   // Reset form inputs
   _resetInputs () {
     this.title.value = ''
     this.description.value = ''
     this.date.value = ''
-
-    if (document.querySelector('[name="priority"]:checked')) {
-      document.querySelector('[name="priority"]:checked').checked = false
-    }
+    document.querySelector('[for^="priority-none"]').checked = true
   }
 
   // Render the Todo List
@@ -109,19 +125,11 @@ export class TodoListView {
       if (event.target.innerHTML === 'Edit Task') {
         const id = event.target.closest('form').id.slice(10)
         const updatedTodo = new Todo(
-          'test', 'test', '', ''
+          'test', 'test', '', 'none'
         )
         handler(updatedTodo, id)
       }
     })
-  }
-
-  // Automatically sets the edit form inputs to make editing faster
-  getEditForm (id) {
-    this.titleEdit = document.querySelector(`#edit-todo-${id} [name="title"]`)
-    this.descriptionEdit = document.querySelector(`#edit-todo-${id} [name="description"]`)
-    this.dateEdit = document.querySelector(`#edit-todo-${id} [name="date"]`)
-    this.priorityEdit = document.querySelector(`#edit-todo-${id} [for$="priority"]`)
   }
 }
 

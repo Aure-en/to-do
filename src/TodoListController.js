@@ -25,8 +25,13 @@ export class TodoListController {
   }
 
   handleOpenEdit (id) {
-    if (document.querySelector(`#edit-todo-${id}`)) return
+    // User can only edit one task at a time, so if there is another Edit Form open, it is closed.
+    if (document.querySelector('[id^="edit-todo"]')) {
+      document.querySelector('[id^="edit-todo"]').remove()
+    }
     new TodoForm('edit', id).renderEdit(document.querySelector(`[id="${id}"]`))
+    this.view.getEditForm(id)
+    this.view.setEditForm(id)
   }
 
   bindAll () {

@@ -63,6 +63,10 @@ export class TodoForm {
       inputPriority.setAttribute('value', priority)
       inputPriority.setAttribute('id', `priority-${priority}-${this.id}`)
 
+      if (priority === 'none') {
+        inputPriority.setAttribute('checked', true)
+      }
+
       priorities.append(labelPriority, inputPriority)
     }
 
