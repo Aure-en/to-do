@@ -4,19 +4,14 @@ export class TodoForm {
     this.id = id
   }
 
-  renderAdd (container) {
-    const formContainer = document.createElement('div')
-    formContainer.classList.add(`${this.goal}__todo`)
-
-    const formBtn = document.createElement('button')
-    formBtn.classList.add('btn', 'btn--dropdown', `btn--${this.goal}`)
-    formBtn.setAttribute('type', 'button')
-    formBtn.setAttribute('data-toggle', `${this.goal}-todo-${this.id}`)
-    formBtn.innerHTML = `${this.goal.slice(0, 1).toUpperCase() + this.goal.slice(1)} Task`
-
+  _renderForm () {
     const form = document.createElement('form')
-    form.classList.add(`${this.goal}--todo`, 'todo-form', 'dropdown', 'hidden')
+    form.classList.add(`${this.goal}--todo`, 'todo-form', 'dropdown')
     form.setAttribute('id', `${this.goal}-todo-${this.id}`)
+
+    if (this.goal === 'add') {
+      form.classList.add('hidden')
+    }
 
     const content = document.createElement('div')
     content.classList.add(`${this.goal}__content`, `${this.goal}__content--todo`)
@@ -45,11 +40,11 @@ export class TodoForm {
 
     const priorityContainer = document.createElement('div')
     priorityContainer.classList.add('add__priority')
-    const priorityBtn = document.createElement('button')
-    priorityBtn.setAttribute('type', 'button')
-    priorityBtn.setAttribute('data-toggle', `add-priority-${this.id}`)
-    priorityBtn.classList.add('btn', 'btn--toggle')
-    priorityBtn.innerHTML = '<i class="far fa-bookmark"></i>'
+    this.priorityBtn = document.createElement('button')
+    this.priorityBtn.setAttribute('type', 'button')
+    this.priorityBtn.setAttribute('data-toggle', `add-priority-${this.id}`)
+    this.priorityBtn.classList.add('btn', 'btn--toggle')
+    this.priorityBtn.innerHTML = '<i class="far fa-bookmark"></i>'
 
     const priorities = document.createElement('div')
     priorities.classList.add('add-priority', 'dropdown', 'hidden')
@@ -71,7 +66,7 @@ export class TodoForm {
       priorities.append(labelPriority, inputPriority)
     }
 
-    priorityContainer.append(priorityBtn, priorities)
+    priorityContainer.append(this.priorityBtn, priorities)
 
     const finish = document.createElement('div')
     finish.classList.add(`${this.goal}__finish`)
@@ -79,7 +74,7 @@ export class TodoForm {
     const submitBtn = document.createElement('button')
     submitBtn.setAttribute('type', 'button')
     submitBtn.classList.add('btn', 'btn--submit')
-    submitBtn.innerHTML = 'Add Task'
+    submitBtn.innerHTML = `${this.goal.toUpperCase().slice(0, 1) + this.goal.slice(1)} Task`
 
     const cancelBtn = document.createElement('button')
     cancelBtn.setAttribute('type', 'button')
@@ -87,14 +82,28 @@ export class TodoForm {
     cancelBtn.innerHTML = 'Cancel'
 
     finish.append(submitBtn, cancelBtn)
-
     content.append(labelTitle, labelDescription, details)
     details.append(labelDate, priorityContainer)
     form.append(content, finish)
-    formContainer.append(formBtn, form)
+
+    return form
+  }
+
+  renderAdd (container) {
+    const formContainer = document.createElement('div')
+    formContainer.classList.add(`${this.goal}__todo`)
+
+    this.formBtn = document.createElement('button')
+    this.formBtn.classList.add('btn', 'btn--dropdown', `btn--${this.goal}`)
+    this.formBtn.setAttribute('type', 'button')
+    this.formBtn.setAttribute('data-toggle', `${this.goal}-todo-${this.id}`)
+    this.formBtn.innerHTML = `${this.goal.slice(0, 1).toUpperCase() + this.goal.slice(1)} Task`
+
+    formContainer.append(this.formBtn, this._renderForm())
     container.append(formContainer)
 
-    this.bindToggle(this.handleToggle)
+    this.bindAddToggle(this.handleToggle)
+    this.bindPriorityToggle(this.handleToggle)
     this.bindPriorityLabel(this.handlePriorityLabel.bind(this))
     this.bindResetPriority(this.handleResetPriority.bind(this))
   }
@@ -103,95 +112,20 @@ export class TodoForm {
     const formContainer = document.createElement('div')
     formContainer.classList.add(`${this.goal}__todo`)
 
-    const form = document.createElement('form')
-    form.classList.add(`${this.goal}--todo`, 'todo-form', 'dropdown')
-    form.setAttribute('id', `${this.goal}-todo-${this.id}`)
-
-    const content = document.createElement('div')
-    content.classList.add(`${this.goal}__content`, `${this.goal}__content--todo`)
-
-    const labelTitle = document.createElement('label')
-    const title = document.createElement('input')
-    title.setAttribute('type', 'text')
-    title.setAttribute('name', 'title')
-    title.setAttribute('placeholder', 'Title')
-    labelTitle.append(title)
-
-    const labelDescription = document.createElement('label')
-    const description = document.createElement('textarea')
-    description.setAttribute('name', 'description')
-    description.setAttribute('placeholder', 'Description')
-    labelDescription.append(description)
-
-    const details = document.createElement('div')
-    details.classList.add(`${this.goal}__details`)
-
-    const labelDate = document.createElement('label')
-    const date = document.createElement('input')
-    date.setAttribute('type', 'date')
-    date.setAttribute('name', 'date')
-    labelDate.append(date)
-
-    const priorityContainer = document.createElement('div')
-    priorityContainer.classList.add('add__priority')
-    const priorityBtn = document.createElement('button')
-    priorityBtn.setAttribute('type', 'button')
-    priorityBtn.setAttribute('data-toggle', `add-priority-${this.id}`)
-    priorityBtn.classList.add('btn', 'btn--toggle')
-    priorityBtn.innerHTML = '<i class="far fa-bookmark"></i>'
-
-    const priorities = document.createElement('div')
-    priorities.classList.add('add-priority', 'dropdown', 'hidden')
-    priorities.setAttribute('id', `add-priority-${this.id}`)
-    const prioritiesList = ['high', 'med', 'low', 'none']
-
-    for (const priority of prioritiesList) {
-      const labelPriority = document.createElement('label')
-      labelPriority.setAttribute('for', `priority-${priority}-${this.id}`)
-      labelPriority.classList.add(`priority-${priority}`, `priority-${this.id}`)
-      labelPriority.innerHTML = '<i class="far fa-bookmark"></i>'
-
-      const inputPriority = document.createElement('input')
-      inputPriority.setAttribute('type', 'radio')
-      inputPriority.setAttribute('name', 'priority')
-      inputPriority.setAttribute('value', priority)
-      inputPriority.setAttribute('id', `priority-${priority}-${this.id}`)
-
-      priorities.append(labelPriority, inputPriority)
-    }
-
-    priorityContainer.append(priorityBtn, priorities)
-
-    const finish = document.createElement('div')
-    finish.classList.add(`${this.goal}__finish`)
-
-    const submitBtn = document.createElement('button')
-    submitBtn.setAttribute('type', 'button')
-    submitBtn.classList.add('btn', 'btn--submit')
-    submitBtn.innerHTML = `${this.goal.slice(0, 1).toUpperCase() + this.goal.slice(1)} Task`
-
-    const cancelBtn = document.createElement('button')
-    cancelBtn.setAttribute('type', 'button')
-    cancelBtn.classList.add('btn', 'btn--cancel')
-    cancelBtn.innerHTML = 'Cancel'
-
-    finish.append(submitBtn, cancelBtn)
-
-    content.append(labelTitle, labelDescription, details)
-    details.append(labelDate, priorityContainer)
-    form.append(content, finish)
-    formContainer.append(form)
+    formContainer.append(this._renderForm())
     before.after(formContainer)
 
-    this.bindToggle(this.handleToggle)
+    this.bindPriorityToggle(this.handleToggle)
     this.bindPriorityLabel(this.handlePriorityLabel.bind(this))
-    this.bindResetPriority(this.handleResetPriority.bind(this))
   }
 
   // Enable form toggle
-  bindToggle (handler) {
-    this.toggleBtn = [document.querySelector(`[data-toggle="add-priority-${this.id}"]`), document.querySelector(`[data-toggle="add-todo-${this.id}"]`)]
-    this.toggleBtn.forEach(toggleBtn => toggleBtn.addEventListener('click', handler))
+  bindPriorityToggle (handler) {
+    this.priorityBtn.addEventListener('click', handler)
+  }
+
+  bindAddToggle (handler) {
+    this.formBtn.addEventListener('click', handler)
   }
 
   handleToggle (event) {

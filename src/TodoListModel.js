@@ -13,10 +13,13 @@ export class TodoListModel {
     this.onTodoListChange(this.todos)
   }
 
-  editTodo (id, field, update) {
+  editTodo (updatedTodo, id) {
+    console.log(this.todos)
     this.todos = this.todos.map((todo) => {
-      if (todo.id === id) {
-        todo[field] = update
+      if (todo.id === +id) {
+        return updatedTodo
+      } else {
+        return todo
       }
     })
     this.onTodoListChange(this.todos)

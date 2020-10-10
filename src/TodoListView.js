@@ -37,7 +37,7 @@ export class TodoListView {
     this.submit = document.querySelector(`.section-${this.id} .todo-form .btn--submit`)
   }
 
-  // Get form values
+  // Get addform values
   get _todoTitle () {
     return this.title.value
   }
@@ -91,6 +91,37 @@ export class TodoListView {
         handler(id)
       }
     })
+  }
+
+  // Open form to edit the todo
+  bindOpenEdit (handler) {
+    this.todoList.addEventListener('click', (event) => {
+      if (!event.target.closest('button')) return
+      if (event.target.closest('button').classList.contains('btn--edit')) {
+        const id = parseInt(event.target.closest('.to-do').id)
+        handler(id)
+      }
+    })
+  }
+
+  bindEditTodo (handler) {
+    this.todoList.addEventListener('click', (event) => {
+      if (event.target.innerHTML === 'Edit Task') {
+        const id = event.target.closest('form').id.slice(10)
+        const updatedTodo = new Todo(
+          'test', 'test', '', ''
+        )
+        handler(updatedTodo, id)
+      }
+    })
+  }
+
+  // Automatically sets the edit form inputs to make editing faster
+  getEditForm (id) {
+    this.titleEdit = document.querySelector(`#edit-todo-${id} [name="title"]`)
+    this.descriptionEdit = document.querySelector(`#edit-todo-${id} [name="description"]`)
+    this.dateEdit = document.querySelector(`#edit-todo-${id} [name="date"]`)
+    this.priorityEdit = document.querySelector(`#edit-todo-${id} [for$="priority"]`)
   }
 }
 

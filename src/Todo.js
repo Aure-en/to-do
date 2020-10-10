@@ -43,35 +43,6 @@ export class Todo {
     this.todoElem.append(this.todoEdit)
 
     container.append(this.todoElem)
-
-    this.bindTodoEdit(this.handleTodoEdit.bind(this))
-  }
-
-  // Open the Edit Form when we click on the pen icon.
-  bindTodoEdit (handler) {
-    this.todoEdit.addEventListener('click', handler)
-  }
-
-  handleTodoEdit () {
-    if (document.querySelector(`#edit-todo-${this.id}`)) return
-    this.editForm.renderEdit(this.todoElem)
-    this._getEdit()
-    this._setEdit()
-  }
-
-  // Get the Todo values and insert them in the form to make editing easier.
-  _getEdit () {
-    this.titleInput = document.querySelector(`#edit-todo-${this.id} [name="title"]`)
-    this.descriptionInput = document.querySelector(`#edit-todo-${this.id} [name="description"]`)
-    this.dateInput = document.querySelector(`#edit-todo-${this.id} [name="date"]`)
-    this.priorityInput = document.querySelector(`#edit-todo-${this.id} [data-toggle^="add-priority"]`)
-  }
-
-  _setEdit () {
-    this.titleInput.value = this.title
-    this.descriptionInput.value = this.description
-    this.dateInput.value = this.date
-    this.priorityInput.classList.add(`priority-${this.priority}`)
   }
 }
 

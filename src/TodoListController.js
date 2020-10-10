@@ -1,3 +1,5 @@
+import { TodoForm } from './TodoForm'
+
 export class TodoListController {
   constructor (model, view) {
     this.model = model
@@ -14,16 +16,23 @@ export class TodoListController {
     this.model.addTodo(todo)
   }
 
-  handleEditTodo (todo, field, update) {
-    this.model.editTodo(todo, field, update)
+  handleEditTodo (updatedTodo, id) {
+    this.model.editTodo(updatedTodo, id)
   }
 
   handleDeleteTodo (id) {
     this.model.deleteTodo(id)
   }
 
+  handleOpenEdit (id) {
+    if (document.querySelector(`#edit-todo-${id}`)) return
+    new TodoForm('edit', id).renderEdit(document.querySelector(`[id="${id}"]`))
+  }
+
   bindAll () {
     this.view.bindAddTodo(this.handleAddTodo.bind(this))
     this.view.bindDeleteTodo(this.handleDeleteTodo.bind(this))
+    this.view.bindOpenEdit(this.handleOpenEdit.bind(this))
+    this.view.bindEditTodo(this.handleEditTodo.bind(this))
   }
 }
