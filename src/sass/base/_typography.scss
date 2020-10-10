@@ -24,6 +24,7 @@ h2 {
   text-transform: uppercase;
   display: inline-block;
   padding: 0.25rem .5rem;
+  cursor: pointer;
 
   &:hover {
     background-color: rgba($color-primary, .05);

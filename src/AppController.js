@@ -12,10 +12,12 @@ export class AppController {
 
     this.view.bindAddProject(this.handleAddProject.bind(this))
     this.view.bindDeleteProject(this.handleDeleteProject.bind(this))
-    this.view.bindToggle(this.handleToggle.bind(this))
+    this.view.bindChangeName(this.handleChangeName.bind(this))
+
     this.view.bindNavToggle(this.handleNavToggle.bind(this))
-    this.view.bindPriority(this.handlePriority.bind(this))
+    this.view.bindToggle(this.handleToggle.bind(this))
     this.view.bindDisplayAll(this.handleDisplayAll.bind(this))
+    this.view.bindPriority(this.handlePriority.bind(this))
     this.view.bindDateToday(this.handleToday.bind(this))
     this.view.bindDateUpcoming(this.handleUpcoming.bind(this))
     this.view.bindDateAnytime(this.handleAnytime.bind(this))
@@ -28,7 +30,7 @@ export class AppController {
     this.model.addProject(project)
 
     project.model.addTodoList(new TodoListController(new TodoListModel('Default'), new TodoListView()))
-    project.view.renderName(name)
+    project.view.renderName(name, project.model.id)
     project.view.render(project.model.todoLists)
     project.view.renderForm(project.model.form)
     project.view.getForm()
@@ -39,7 +41,7 @@ export class AppController {
 
   // Links the newly created navigation button to its project
   handleNavClick (project) {
-    project.view.renderName(project.model.name)
+    project.view.renderName(project.model.name, project.model.id)
     project.view.render(project.model.todoLists)
     project.view.renderForm(project.model.form)
     project.view.getForm()
@@ -52,6 +54,11 @@ export class AppController {
     this.model.deleteProject(id)
     document.querySelector(`[data-project="project-${id}"]`).remove()
     document.querySelector('[data-project="project-1"]').dispatchEvent(new Event('click'))
+  }
+
+  handleChangeName (id, name) {
+    this.model.editProject(id, name)
+    document.querySelector(`[data-filter="project-${id}"]`).textContent = name
   }
 
   // Enable all toggle buttons
@@ -89,7 +96,6 @@ export class AppController {
   }
 
   // Dates filters
-
   handleToday () {
     const today = new Date()
     const todos = document.querySelectorAll('.to-do')

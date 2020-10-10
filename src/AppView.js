@@ -27,6 +27,10 @@ export class AppView {
 
     // Toggle categories
     this.toggleBtn = document.querySelectorAll('.btn--dropdown')
+
+    // Edit Project Name
+    this._temporaryName
+    this._changeName()
   }
 
   // Get new project's name
@@ -111,5 +115,24 @@ export class AppView {
 
   bindDisplayAll (handler) {
     this.displayAllBtn.forEach((displayAllBtn) => displayAllBtn.addEventListener('click', handler))
+  }
+
+  // Edit Project Name
+
+  _changeName () {
+    this.container.addEventListener('input', (event) => {
+      if (event.target.classList.contains('project__name')) {
+        this._temporaryName = event.target.innerHTML
+      }
+    })
+  }
+
+  bindChangeName (handler) {
+    this.container.addEventListener('focusout', (event) => {
+      if (this._temporaryName) {
+        handler(event.target.id, this._temporaryName)
+        this._temporaryName = ''
+      }
+    })
   }
 }

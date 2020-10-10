@@ -13,8 +13,9 @@ export class ProjectView {
   }
 
   // Render the name of the project
-  renderName (name) {
+  renderName (name, id) {
     this.name.innerHTML = name
+    this.name.setAttribute('id', id)
   }
 
   // Render the add section form
