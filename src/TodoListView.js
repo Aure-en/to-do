@@ -57,11 +57,11 @@ export class TodoListView {
   }
 
   // Get the Edit form inputs
-  getEditForm (id) {
-    this.titleEdit = document.querySelector(`#edit-todo-${id} [name="title"]`)
-    this.descriptionEdit = document.querySelector(`#edit-todo-${id} [name="description"]`)
-    this.dateEdit = document.querySelector(`#edit-todo-${id} [name="date"]`)
-    this.priorityEdit = document.querySelector(`#edit-todo-${id} .btn--toggle`)
+  getEditForm () {
+    this.titleEdit = document.querySelector('[id^="edit-todo"] [name="title"]')
+    this.descriptionEdit = document.querySelector('[id^="edit-todo"] [name="description"]')
+    this.dateEdit = document.querySelector('[id^="edit-todo"] [name="date"]')
+    this.priorityEdit = document.querySelector('[id^="edit-todo"] .btn--toggle')
   }
 
   // Automatically pre-fill the Edit form inputs
@@ -70,10 +70,25 @@ export class TodoListView {
     this.descriptionEdit.value = document.querySelector(`[id="${id}"] .to-do__description`).innerHTML
     this.dateEdit.value = document.querySelector(`[id="${id}"] .to-do__date`).innerHTML
     this.priorityEdit.classList.add(document.querySelector(`[id="${id}"] .to-do__priority`).classList[1])
-    document.querySelector(`#edit-todo-${id} [id^="${document.querySelector(`[id="${id}"] .to-do__priority`).classList[1]}"]`).checked = true
+    document.querySelector(`[id^="edit-todo"] [id^="${document.querySelector(`[id="${id}"] .to-do__priority`).classList[1]}"]`).checked = true
   }
 
   // Get the Edit form values
+  get _editTitle () {
+    return this.titleEdit.value
+  }
+
+  get _editDescription () {
+    return this.descriptionEdit.value
+  }
+
+  get _editDate () {
+    return this.dateEdit.value
+  }
+
+  get _editPriority () {
+    return document.querySelector('[id^="edit-todo"] [name="priority"]:checked').value
+  }
 
   // Reset form inputs
   _resetInputs () {
@@ -124,9 +139,7 @@ export class TodoListView {
     this.todoList.addEventListener('click', (event) => {
       if (event.target.innerHTML === 'Edit Task') {
         const id = event.target.closest('form').id.slice(10)
-        const updatedTodo = new Todo(
-          'test', 'test', '', 'none'
-        )
+        const updatedTodo = new Todo(this._editTitle, this._editDescription, this._editDate, this._editPriority)
         handler(updatedTodo, id)
       }
     })

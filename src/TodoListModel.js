@@ -14,7 +14,6 @@ export class TodoListModel {
   }
 
   editTodo (updatedTodo, id) {
-    console.log(this.todos)
     this.todos = this.todos.map((todo) => {
       if (todo.id === +id) {
         return updatedTodo
