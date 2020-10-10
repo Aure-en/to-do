@@ -8,6 +8,8 @@ export class ProjectView {
     this.sections = document.querySelector('.sections')
     this.name = document.querySelector('.project__name')
     this.id = id
+    this._temporaryName
+    this._changeName()
   }
 
   // Render the name of the project
@@ -48,6 +50,25 @@ export class ProjectView {
       todoList.view.getForm(todoList.model.form)
       todoList.bindAll()
     }
+  }
+
+  // Allow section name edits
+  _changeName () {
+    this.sections.addEventListener('input', event => {
+      if (event.target.classList.contains('section__name')) {
+        this._temporaryName = event.target.innerHTML
+      }
+    })
+  }
+
+  bindChangeName (handler) {
+    this.sections.addEventListener('focusout', event => {
+      if (this._temporaryName) {
+        const id = event.target.closest('div').classList[0].slice(8)
+        handler(id, this._temporaryName)
+        this._temporaryName = ''
+      }
+    })
   }
 
   // Event Listeners

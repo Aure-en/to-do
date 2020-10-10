@@ -14,11 +14,12 @@ export class ProjectModel {
     this.onProjectChange(this.todoLists)
   }
 
-  editTodoList (id, update) {
+  editTodoList (id, name) {
     this.todoLists = this.todoLists.map((todoList) => {
-      if (todoList.id === id) {
-        todoList.name = update
+      if (todoList.model.id === +id) {
+        todoList.model.name = name
       }
+      return todoList
     })
     this.onProjectChange(this.todoLists)
   }

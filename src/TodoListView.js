@@ -20,6 +20,7 @@ export class TodoListView {
   renderName (name) {
     this.name = document.createElement('h2')
     this.name.classList.add('section__name')
+    this.name.setAttribute('contenteditable', true)
     this.name.innerHTML = name
     this.section.prepend(this.name)
   }
