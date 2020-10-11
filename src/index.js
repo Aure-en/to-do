@@ -44,5 +44,5 @@ app.model.projects[0].model.todoLists[1].handleAddTodo(new Todo(
 
 app.model.projects[0].model.todoLists[1].handleAddTodo(new Todo(
   'Start working out',
-  'I\'ll start... Tomorrow'
+  'I\'ll start... Tomorrow. Or next year.'
 ))

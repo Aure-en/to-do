@@ -84,6 +84,21 @@ textarea {
     text-align: center;
     margin: 0 .5rem;
   }
+
+  @media all and (max-width: 1140px) {
+    right: -10px;
+    left: initial;
+
+    &:before {
+      right: 15px;
+      left: initial;
+    }
+  
+    &:after {
+      right: 14px;
+      left: initial;
+    }
+  }
 }
 
 .add__finish,

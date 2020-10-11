@@ -46,4 +46,11 @@
       background: rgba($color-primary, .07);
     }
   }
+
+  @media all and (max-width: 768px) {
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+  }
+
 }

@@ -11,10 +11,15 @@ main {
   max-width: 700px;
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
 }
 
 .main--hidden {
   transform: translateX(-125px);
+
+  @media all and (max-width: 768px) {
+    transform: translateX(0)
+  }
 }
 
 .section__name__container {

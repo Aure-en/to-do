@@ -62,10 +62,11 @@ h2 {
 
   &--cancel,
   &--add {
-    color: rgba($color-primary, .65);
+    color: rgba($color-primary, .45);
 
-    &:hover {
-      color: rgba($color-primary, .85);
+    &:hover,
+    &:hover:before {
+      color: rgba($color-primary, .75);
     }
   }
 
