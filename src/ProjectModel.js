@@ -25,7 +25,7 @@ export class ProjectModel {
   }
 
   deleteTodoList (id) {
-    this.todoLists = this.todoLists.filter(todoList => todoList.id !== id)
+    this.todoLists = this.todoLists.filter(todoList => todoList.model.id !== +id)
     this.onProjectChange(this.todoLists)
   }
 

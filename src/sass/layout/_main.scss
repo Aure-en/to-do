@@ -16,3 +16,12 @@ main {
 .main--hidden {
   transform: translateX(-125px);
 }
+
+.section__name__container {
+  display: flex;
+  justify-content: space-between;
+
+  &:hover .btn--delete {
+    display: initial;
+  }
+}

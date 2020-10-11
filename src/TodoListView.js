@@ -18,11 +18,22 @@ export class TodoListView {
 
   // Render the section's name
   renderName (name) {
+    this.nameContainer = document.createElement('div')
+    this.nameContainer.classList.add('section__name__container')
+
     this.name = document.createElement('h2')
     this.name.classList.add('section__name')
     this.name.setAttribute('contenteditable', true)
     this.name.innerHTML = name
-    this.section.prepend(this.name)
+
+    this.deleteBtn = document.createElement('button')
+    this.deleteBtn.classList.add('btn--delete')
+    this.deleteBtn.setAttribute('type', 'button')
+    this.deleteBtn.setAttribute('data-delete', this.section.classList[0].slice(8))
+    this.deleteBtn.innerHTML = '<i class="fas fa-times"></i>'
+
+    this.nameContainer.append(this.name, this.deleteBtn)
+    this.section.prepend(this.nameContainer)
   }
 
   // Render the Add form

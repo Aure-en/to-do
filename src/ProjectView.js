@@ -80,4 +80,13 @@ export class ProjectView {
       this._resetInput()
     })
   }
+
+  bindDeleteSection (handler) {
+    this.sections.addEventListener('click', (event) => {
+      if (event.target.closest('.btn--delete')) {
+        const id = event.target.closest('.btn--delete').dataset.delete
+        handler(id)
+      }
+    })
+  }
 }
