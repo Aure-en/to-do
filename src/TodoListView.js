@@ -124,14 +124,15 @@ export class TodoListView {
   // Event Listeners
 
   bindAddTodo (handler) {
-    this.submit.addEventListener('click', () => {
+    this.submit.addEventListener('click', (event) => {
+      event.preventDefault()
       handler(new Todo(this._todoTitle, this._todoDescription, this._todoDate, this._todoPriority))
       this._resetInputs()
     })
   }
 
   bindDeleteTodo (handler) {
-    this.todoList.addEventListener('change', (event) => {
+    this.todoList.addEventListener('click', (event) => {
       if (event.target.classList.contains('to-do__check')) {
         const id = parseInt(event.target.parentElement.id)
         handler(id)
@@ -151,6 +152,7 @@ export class TodoListView {
 
   bindEditTodo (handler) {
     this.todoList.addEventListener('click', (event) => {
+      event.preventDefault()
       if (event.target.innerHTML === 'Edit Task') {
         const id = event.target.closest('form').id.slice(10)
         const updatedTodo = new Todo(this._editTitle, this._editDescription, this._editDate, this._editPriority)

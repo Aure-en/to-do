@@ -6,7 +6,7 @@ export class AppView {
 
     // Form to create new projects
     this.projectInput = document.querySelector('.add--project [name="name"]')
-    this.projectSubmit = document.querySelector('.add--project .btn--submit')
+    this.projectSubmit = document.querySelector('.add--project')
 
     // Sort tasks
     this.sortTitle = document.querySelector('#sort-title')
@@ -62,7 +62,8 @@ export class AppView {
   }
 
   bindAddProject (handler) {
-    this.projectSubmit.addEventListener('click', () => {
+    this.projectSubmit.addEventListener('submit', (event) => {
+      event.preventDefault()
       handler(this._projectName)
       this._resetInput()
     })

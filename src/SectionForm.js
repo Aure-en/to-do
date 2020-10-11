@@ -32,7 +32,7 @@ export class SectionForm {
     finish.classList.add('add__finish')
 
     const submitBtn = document.createElement('button')
-    submitBtn.setAttribute('type', 'button')
+    submitBtn.setAttribute('type', 'submit')
     submitBtn.setAttribute('data-add', 'section')
     submitBtn.classList.add('btn', 'btn--submit')
     submitBtn.innerHTML = 'Add Section'
