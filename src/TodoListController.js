@@ -29,7 +29,7 @@ export class TodoListController {
     if (document.querySelector('[id^="edit-todo"]')) {
       document.querySelector('[id^="edit-todo"]').remove()
     }
-    new TodoForm('edit', id).renderEdit(document.querySelector(`[id="${id}"]`))
+    new TodoForm('edit', id).renderEdit(document.querySelector(`.to-do[id="${id}"]`))
     this.view.getEditForm(id)
     this.view.setEditForm(id)
   }
