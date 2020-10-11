@@ -41,7 +41,9 @@ export class ProjectView {
 
   // Render the project by rendering every section
   render (todoLists) {
-    this.sections.innerHTML = ''
+    while (this.sections.firstChild) {
+      this.sections.firstChild.remove()
+    }
 
     for (const todoList of todoLists) {
       todoList.view.createSection()
@@ -49,7 +51,7 @@ export class ProjectView {
       todoList.view.render(todoList.model.todos)
       todoList.view.renderForm(todoList.model.form)
       todoList.view.getForm(todoList.model.form)
-      todoList.bindAll()
+      todoList.bindAdd()
     }
   }
 
@@ -65,7 +67,7 @@ export class ProjectView {
   bindChangeName (handler) {
     this.sections.addEventListener('focusout', event => {
       if (this._temporaryName) {
-        const id = event.target.closest('div').classList[0].slice(8)
+        const id = event.target.closest('[class^="section-"]').classList[0].slice(8)
         handler(id, this._temporaryName)
         this._temporaryName = ''
       }
@@ -75,9 +77,11 @@ export class ProjectView {
   // Event Listeners
 
   bindAddSection (handler) {
-    this.submit.addEventListener('click', () => {
-      handler(new TodoListController(new TodoListModel(this._sectionName, this.id), new TodoListView(this.id)))
-      this._resetInput()
+    this.container.addEventListener('click', (event) => {
+      if (event.target.innerHTML === 'Add Section' && event.target.classList.contains('btn--submit')) {
+        handler(new TodoListController(new TodoListModel(this._sectionName, this.id), new TodoListView(this.id)))
+        this._resetInput()
+      }
     })
   }
 

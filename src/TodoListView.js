@@ -112,7 +112,10 @@ export class TodoListView {
 
   // Render the Todo List
   render (todos) {
-    this.todoList.innerHTML = ''
+    while (this.todoList.firstChild) {
+      this.todoList.firstChild.remove()
+    }
+
     for (const todo of todos) {
       todo.render(this.todoList)
     }
@@ -139,8 +142,7 @@ export class TodoListView {
   // Open form to edit the todo
   bindOpenEdit (handler) {
     this.todoList.addEventListener('click', (event) => {
-      if (!event.target.closest('button')) return
-      if (event.target.closest('button').classList.contains('btn--edit')) {
+      if (event.target.closest('.btn--edit')) {
         const id = parseInt(event.target.closest('.to-do').id)
         handler(id)
       }

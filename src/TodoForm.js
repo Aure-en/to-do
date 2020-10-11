@@ -106,10 +106,9 @@ export class TodoForm {
     formContainer.append(this.formBtn, this._renderForm())
     container.append(formContainer)
 
-    this.bindAddToggle(this.handleToggle)
-    this.bindPriorityToggle(this.handleToggle)
-    this.bindPriorityLabel(this.handlePriorityLabel.bind(this))
-    this.bindResetPriority(this.handleResetPriority.bind(this))
+    this._initPriorityToggle()
+    this._initPriorityLabels()
+    this._initAddToggle()
   }
 
   renderEdit (before) {
@@ -119,41 +118,36 @@ export class TodoForm {
     formContainer.append(this._renderForm())
     before.after(formContainer)
 
-    this.bindPriorityToggle(this.handleToggle)
-    this.bindPriorityLabel(this.handlePriorityLabel.bind(this))
+    this._initPriorityToggle()
+    this._initPriorityLabels()
   }
 
   // Enable form toggle
-  bindPriorityToggle (handler) {
-    this.priorityBtn.addEventListener('click', handler)
+
+  _initPriorityToggle () {
+    this.priorityBtn.addEventListener('click', () => document.querySelector(`#${this.priorityBtn.dataset.toggle}`).classList.toggle('hidden'))
   }
 
-  bindAddToggle (handler) {
-    this.formBtn.addEventListener('click', handler)
-  }
-
-  handleToggle (event) {
-    document.querySelector(`#${event.target.closest('button').dataset.toggle}`).classList.toggle('hidden')
+  _initAddToggle () {
+    this.formBtn.addEventListener('click', () => document.querySelector(`#${this.formBtn.dataset.toggle}`).classList.toggle('hidden'))
   }
 
   // Enable priority toggle and color change when selecting a priority
-  bindPriorityLabel (handler) {
-    this.labels = document.querySelectorAll(`.priority-${this.id}`)
-    this.labels.forEach(label => label.addEventListener('click', handler))
-  }
 
-  handlePriorityLabel (event) {
-    document.querySelector(`#add-priority-${this.id}`).classList.add('hidden')
-    document.querySelector(`[data-toggle="add-priority-${this.id}"]`).style.color = getComputedStyle(event.target.closest('label')).color
+  _initPriorityLabels () {
+    this.labels = document.querySelectorAll(`.priority-${this.id}`)
+    this.labels.forEach(label => label.addEventListener('click', () => {
+      document.querySelector(`#add-priority-${this.id}`).classList.add('hidden')
+      document.querySelector(`[data-toggle="add-priority-${this.id}"]`).style.color = getComputedStyle(event.target.closest('label')).color
+    }))
   }
 
   // Reset priority color when adding a task
-  bindResetPriority (handler) {
-    document.querySelector(`#add-todo-${this.id} .btn--submit`).addEventListener('click', handler)
-  }
 
-  handleResetPriority () {
-    document.querySelector(`[data-toggle="add-priority-${this.id}"]`).style.color = ''
+  _initResetPriority () {
+    document.querySelector(`#add-todo-${this.id} .btn--submit`).addEventListener('click', () => {
+      document.querySelector(`[data-toggle="add-priority-${this.id}"]`).style.color = ''
+    })
   }
 }
 

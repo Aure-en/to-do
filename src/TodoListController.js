@@ -6,6 +6,9 @@ export class TodoListController {
     this.view = view
     this.onTodoListChange(this.model.todos)
     this.model.bindTodoListChange(this.onTodoListChange.bind(this))
+    this.view.bindDeleteTodo(this.handleDeleteTodo.bind(this))
+    this.view.bindOpenEdit(this.handleOpenEdit.bind(this))
+    this.view.bindEditTodo(this.handleEditTodo.bind(this))
   }
 
   onTodoListChange (todos) {
@@ -34,10 +37,7 @@ export class TodoListController {
     this.view.setEditForm(id)
   }
 
-  bindAll () {
+  bindAdd () {
     this.view.bindAddTodo(this.handleAddTodo.bind(this))
-    this.view.bindDeleteTodo(this.handleDeleteTodo.bind(this))
-    this.view.bindOpenEdit(this.handleOpenEdit.bind(this))
-    this.view.bindEditTodo(this.handleEditTodo.bind(this))
   }
 }
