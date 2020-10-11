@@ -1,7 +1,7 @@
 import { TodoForm } from './TodoForm'
 
 export class Todo {
-  constructor (title, description, date, priority = 'none') {
+  constructor (title, description, date = '', priority = 'none') {
     this.title = title
     this.description = description
     this.date = date

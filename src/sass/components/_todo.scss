@@ -2,10 +2,11 @@
   display: grid;
   grid-template-columns: auto 6.5rem 1fr 6.5rem 2rem;
   grid-auto-flow: column;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   align-items: start;
-  word-break: break-all;
+  word-break: break-word;
   position: relative;
+  margin: .75rem 0;
   
   &__check {
     margin-top: 7px;

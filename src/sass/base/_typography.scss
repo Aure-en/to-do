@@ -37,6 +37,7 @@ h2 {
   text-transform: uppercase;
   display: inline-block;
   padding: 0.25rem .5rem;
+  margin-top: 1.25rem;
 }
 
 .btn {
@@ -59,11 +60,12 @@ h2 {
     color: #fff;
   }
 
-  &--cancel {
-    color: rgba($color-primary, .5);
+  &--cancel,
+  &--add {
+    color: rgba($color-primary, .65);
 
     &:hover {
-      color: rgba($color-primary, .7);
+      color: rgba($color-primary, .85);
     }
   }
 
@@ -74,9 +76,7 @@ h2 {
     &:hover {
       color: rgba($color-primary, .75);
     }
-
   }
-
 }
 
 // Nav
