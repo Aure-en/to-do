@@ -6,6 +6,19 @@ button {
   text-align: justify;
 }
 
+[contenteditable] {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color-primary, .05);
+  }
+
+  &:focus {
+    border: 1px solid rgba($color-primary, .5);
+    outline: none;
+  }
+}
+
 h1 {
   font-size: 1.35rem;
   margin: 1rem 0;
@@ -24,16 +37,6 @@ h2 {
   text-transform: uppercase;
   display: inline-block;
   padding: 0.25rem .5rem;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba($color-primary, .05);
-  }
-
-  &:focus {
-    border: 1px solid rgba($color-primary, .5);
-    outline: none;
-  }
 }
 
 .btn {

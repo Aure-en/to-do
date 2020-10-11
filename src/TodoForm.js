@@ -82,6 +82,7 @@ export class TodoForm {
 
     const cancelBtn = document.createElement('button')
     cancelBtn.setAttribute('type', 'button')
+    cancelBtn.setAttribute('data-toggle', `${this.goal}-todo-${this.id}`)
     cancelBtn.classList.add('btn', 'btn--cancel')
     cancelBtn.innerHTML = 'Cancel'
 
@@ -108,7 +109,6 @@ export class TodoForm {
 
     this._initPriorityToggle()
     this._initPriorityLabels()
-    this._initAddToggle()
   }
 
   renderEdit (before) {
@@ -122,17 +122,11 @@ export class TodoForm {
     this._initPriorityLabels()
   }
 
-  // Enable form toggle
+  // Enable priority toggle and color change when selecting a priority
 
   _initPriorityToggle () {
     this.priorityBtn.addEventListener('click', () => document.querySelector(`#${this.priorityBtn.dataset.toggle}`).classList.toggle('hidden'))
   }
-
-  _initAddToggle () {
-    this.formBtn.addEventListener('click', () => document.querySelector(`#${this.formBtn.dataset.toggle}`).classList.toggle('hidden'))
-  }
-
-  // Enable priority toggle and color change when selecting a priority
 
   _initPriorityLabels () {
     this.labels = document.querySelectorAll(`.priority-${this.id}`)

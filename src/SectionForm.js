@@ -33,28 +33,18 @@ export class SectionForm {
 
     const submitBtn = document.createElement('button')
     submitBtn.setAttribute('type', 'button')
+    submitBtn.setAttribute('data-add', 'section')
     submitBtn.classList.add('btn', 'btn--submit')
     submitBtn.innerHTML = 'Add Section'
 
     const cancelBtn = document.createElement('button')
     cancelBtn.setAttribute('type', 'button')
+    cancelBtn.setAttribute('data-toggle', `section-form-${this.id}`)
     cancelBtn.classList.add('btn', 'btn--cancel')
     cancelBtn.innerHTML = 'Cancel'
 
     finish.append(submitBtn, cancelBtn)
     form.append(content, finish)
     formContainer.append(formBtn, form)
-
-    this.bindToggle(this.handleToggle)
-  }
-
-  // Enable form toggle
-  bindToggle (handler) {
-    this.toggleBtn = document.querySelector(`[data-toggle="section-form-${this.id}"]`)
-    this.toggleBtn.addEventListener('click', handler)
-  }
-
-  handleToggle (event) {
-    document.querySelector(`#${event.target.dataset.toggle}`).classList.toggle('hidden')
   }
 }

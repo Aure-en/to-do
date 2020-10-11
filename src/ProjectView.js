@@ -78,7 +78,7 @@ export class ProjectView {
 
   bindAddSection (handler) {
     this.container.addEventListener('click', (event) => {
-      if (event.target.innerHTML === 'Add Section' && event.target.classList.contains('btn--submit')) {
+      if (event.target.dataset.add === 'section') {
         handler(new TodoListController(new TodoListModel(this._sectionName, this.id), new TodoListView(this.id)))
         this._resetInput()
       }

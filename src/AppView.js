@@ -25,9 +25,6 @@ export class AppView {
     this.navBtn = document.querySelector('[data-toggle="nav"]')
     this.nav = document.querySelector('.nav')
 
-    // Toggle categories
-    this.toggleBtn = document.querySelectorAll('.btn--dropdown')
-
     // Edit Project Name
     this._temporaryName
     this._changeName()
@@ -84,7 +81,11 @@ export class AppView {
 
   // Navigation toggles
   bindToggle (handler) {
-    this.toggleBtn.forEach((toggleBtn) => toggleBtn.addEventListener('click', handler))
+    document.body.addEventListener('click', (event) => {
+      if (event.target.dataset.toggle) {
+        handler(event)
+      }
+    })
   }
 
   bindNavToggle (handler) {
