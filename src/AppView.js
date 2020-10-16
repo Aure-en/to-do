@@ -26,7 +26,7 @@ export class AppView {
     this.nav = document.querySelector('.nav')
 
     // Edit Project Name
-    this._temporaryName
+    this._temporaryName = ''
     this._changeName()
   }
 

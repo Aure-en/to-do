@@ -47,4 +47,4 @@ export class Todo {
   }
 }
 
-Todo.counter = JSON.parse(localStorage.getItem('TodoCounter')) || 0
+Todo.counter = 0

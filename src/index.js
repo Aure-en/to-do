@@ -9,7 +9,6 @@ import { ProjectController } from './ProjectController'
 import { ProjectModel } from './ProjectModel'
 import { ProjectView } from './ProjectView'
 import { Todo } from './Todo'
-import { TodoForm } from './TodoForm'
 
 const app = new AppController(new AppModel(), new AppView())
 
@@ -62,12 +61,6 @@ if (!localStorage.projects) {
   let tempStorage = [...app.model.projects]
 
   localStorage.clear()
-  ProjectModel.counter = 0
-  AppModel.counter = 0
-  TodoListModel.counter = 0
-  Todo.counter = 0
-  TodoForm.counter = 0
-  console.log(ProjectModel.counter)
 
   app.model.projects = []
 

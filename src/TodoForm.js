@@ -130,7 +130,7 @@ export class TodoForm {
 
   _initPriorityLabels () {
     this.labels = document.querySelectorAll(`.priority-${this.id}`)
-    this.labels.forEach(label => label.addEventListener('click', () => {
+    this.labels.forEach(label => label.addEventListener('click', (event) => {
       document.querySelector(`#add-priority-${this.id}`).classList.add('hidden')
       document.querySelector(`[data-toggle="add-priority-${this.id}"]`).style.color = getComputedStyle(event.target.closest('label')).color
     }))
@@ -144,5 +144,3 @@ export class TodoForm {
     })
   }
 }
-
-TodoForm.counter = 0

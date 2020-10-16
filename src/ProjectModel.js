@@ -1,4 +1,5 @@
 import { SectionForm } from './SectionForm'
+import { localStorageModule } from './localStorageModule'
 
 export class ProjectModel {
   constructor (name) {
@@ -8,42 +9,16 @@ export class ProjectModel {
     this.form = new SectionForm(this.id)
   }
 
-  _checkStorage () {
-    if (!JSON.parse(localStorage.getItem('projects')).filter((project) => project.id === this.id)[0]) {
-      this.todoLists = []
-    } else {
-      this.todos = JSON.parse(localStorage.getItem('projects'))
-        .filter((project) => project.id === this.id)[0]
-        .model
-        .todoLists || []
-    }
-  }
-
-  _updateStorage () {
-    localStorage.setItem(
-      'projects',
-      JSON.stringify(
-        JSON.parse(localStorage.getItem('projects'))
-          .map((project) => {
-            if (project.id === this.id) {
-              project.model.todoLists = this.todoLists
-            }
-            return project
-          })
-      )
-    )
-  }
-
   _commit (todoLists) {
     this.onProjectChange(todoLists)
-    this._updateStorage()
+    localStorageModule.updateTodoLists(this.id, this.todoLists)
   }
 
   addTodoList (todoList) {
     this.todoLists.push(todoList)
     todoList.id = this.todoLists.length
     this._commit(this.todoLists)
-    localStorage.setItem('ProjectCounter', ProjectModel.counter)
+    localStorage.setItem('ProjectModelCounter', ProjectModel.counter)
   }
 
   editTodoList (id, name) {
@@ -66,4 +41,4 @@ export class ProjectModel {
   }
 }
 
-ProjectModel.counter = JSON.parse(localStorage.getItem('ProjectCounter')) || 0
+ProjectModel.counter = 0
