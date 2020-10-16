@@ -43,7 +43,8 @@ export class Todo {
     this.todoElem.append(this.todoEdit)
 
     container.append(this.todoElem)
+    localStorage.setItem('TodoCounter', Todo.counter)
   }
 }
 
-Todo.counter = 0
+Todo.counter = JSON.parse(localStorage.getItem('TodoCounter')) || 0

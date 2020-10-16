@@ -8,10 +8,42 @@ export class ProjectModel {
     this.form = new SectionForm(this.id)
   }
 
+  _checkStorage () {
+    if (!JSON.parse(localStorage.getItem('projects')).filter((project) => project.id === this.id)[0]) {
+      this.todoLists = []
+    } else {
+      this.todos = JSON.parse(localStorage.getItem('projects'))
+        .filter((project) => project.id === this.id)[0]
+        .model
+        .todoLists || []
+    }
+  }
+
+  _updateStorage () {
+    localStorage.setItem(
+      'projects',
+      JSON.stringify(
+        JSON.parse(localStorage.getItem('projects'))
+          .map((project) => {
+            if (project.id === this.id) {
+              project.model.todoLists = this.todoLists
+            }
+            return project
+          })
+      )
+    )
+  }
+
+  _commit (todoLists) {
+    this.onProjectChange(todoLists)
+    this._updateStorage()
+  }
+
   addTodoList (todoList) {
     this.todoLists.push(todoList)
     todoList.id = this.todoLists.length
-    this.onProjectChange(this.todoLists)
+    this._commit(this.todoLists)
+    localStorage.setItem('ProjectCounter', ProjectModel.counter)
   }
 
   editTodoList (id, name) {
@@ -21,12 +53,12 @@ export class ProjectModel {
       }
       return todoList
     })
-    this.onProjectChange(this.todoLists)
+    this._commit(this.todoLists)
   }
 
   deleteTodoList (id) {
     this.todoLists = this.todoLists.filter(todoList => todoList.model.id !== +id)
-    this.onProjectChange(this.todoLists)
+    this._commit(this.todoLists)
   }
 
   bindProjectChange (callback) {
@@ -34,4 +66,4 @@ export class ProjectModel {
   }
 }
 
-ProjectModel.counter = 0
+ProjectModel.counter = JSON.parse(localStorage.getItem('ProjectCounter')) || 0

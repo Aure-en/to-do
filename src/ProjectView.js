@@ -1,6 +1,7 @@
 import { TodoListController } from './TodoListController'
 import { TodoListModel } from './TodoListModel'
 import { TodoListView } from './TodoListView'
+import { ProjectModel } from './ProjectModel'
 
 export class ProjectView {
   constructor (id) {
@@ -8,7 +9,7 @@ export class ProjectView {
     this.sections = document.querySelector('.sections')
     this.name = document.querySelector('.project__name')
     this.id = id
-    this._temporaryName
+    this._temporaryName = ''
     this._changeName()
   }
 
@@ -78,7 +79,7 @@ export class ProjectView {
     this.container.addEventListener('submit', (event) => {
       event.preventDefault()
       if (event.target.classList.contains('add--section')) {
-        handler(new TodoListController(new TodoListModel(this._sectionName, this.id), new TodoListView(this.id)))
+        handler(new TodoListController(new TodoListModel(this._sectionName, ProjectModel.counter), new TodoListView(ProjectModel.counter)))
         this._resetInput()
       }
     })

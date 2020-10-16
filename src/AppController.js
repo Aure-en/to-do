@@ -29,18 +29,18 @@ export class AppController {
     const project = new ProjectController(new ProjectModel(name), new ProjectView(ProjectModel.counter))
     this.model.addProject(project)
 
-    project.model.addTodoList(new TodoListController(new TodoListModel('Default'), new TodoListView()))
-    this._displayProject(project)
+    project.model.addTodoList(new TodoListController(new TodoListModel('Default', project.model.id), new TodoListView()))
+    this.displayProject(project)
     this.view.renderBtn(name, project.model.id)
     document.querySelector(`[data-project="project-${project.model.id}"]`).addEventListener('click', () => this.handleNavClick(project))
   }
 
   // Links the newly created navigation button to its project
   handleNavClick (project) {
-    this._displayProject(project)
+    this.displayProject(project)
   }
 
-  _displayProject (project) {
+  displayProject (project) {
     project.view.renderName(project.model.name, project.model.id)
     project.view.render(project.model.todoLists)
     project.view.renderForm(project.model.form)

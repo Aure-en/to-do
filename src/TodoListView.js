@@ -5,7 +5,7 @@ export class TodoListView {
     this.project = document.querySelector('.sections')
     this.todoList = document.createElement('div')
     this.todoList.classList.add('todolist')
-    this.id = ++TodoListView.counter
+    this.id = JSON.parse(localStorage.getItem('TodoListCounter'))
   }
 
   // Create a section
@@ -161,5 +161,3 @@ export class TodoListView {
     })
   }
 }
-
-TodoListView.counter = 0
