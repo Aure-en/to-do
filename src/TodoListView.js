@@ -63,8 +63,8 @@ export class TodoListView {
   }
 
   get _todoPriority () {
-    if (document.querySelector('[name="priority"]:checked')) {
-      return document.querySelector('[name="priority"]:checked').value
+    if (document.querySelector(`#add-todo-${this.id} [name="priority"]:checked`)) {
+      return document.querySelector(`#add-todo-${this.id} [name="priority"]:checked`).value
     }
   }
 
