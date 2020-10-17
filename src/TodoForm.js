@@ -42,13 +42,13 @@ export class TodoForm {
     priorityContainer.classList.add('add__priority')
     this.priorityBtn = document.createElement('button')
     this.priorityBtn.setAttribute('type', 'button')
-    this.priorityBtn.setAttribute('data-toggle', `add-priority-${this.id}`)
+    this.priorityBtn.setAttribute('data-toggle', `${this.goal}-add-priority-${this.id}`)
     this.priorityBtn.classList.add('btn', 'btn--toggle')
     this.priorityBtn.innerHTML = '<i class="far fa-bookmark"></i>'
 
     const priorities = document.createElement('div')
     priorities.classList.add('add-priority', 'dropdown', 'hidden')
-    priorities.setAttribute('id', `add-priority-${this.id}`)
+    priorities.setAttribute('id', `${this.goal}-add-priority-${this.id}`)
     const prioritiesList = ['high', 'med', 'low', 'none']
 
     for (const priority of prioritiesList) {
@@ -131,8 +131,8 @@ export class TodoForm {
   _initPriorityLabels () {
     this.labels = document.querySelectorAll(`.priority-${this.id}`)
     this.labels.forEach(label => label.addEventListener('click', (event) => {
-      document.querySelector(`#add-priority-${this.id}`).classList.add('hidden')
-      document.querySelector(`[data-toggle="add-priority-${this.id}"]`).style.color = getComputedStyle(event.target.closest('label')).color
+      document.querySelector(`#${label.getAttribute('for')}`).checked = true
+      document.querySelector(`[data-toggle="${this.goal}-add-priority-${this.id}"]`).style.color = getComputedStyle(event.target.closest('label')).color
     }))
   }
 
