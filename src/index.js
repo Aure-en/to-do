@@ -51,13 +51,13 @@ if (!localStorage.projects) {
     'Start working out',
     'I\'ll start... Tomorrow. Or next year.'
   ))
-} else {
+
 /* On all the other uses:
     - Load the localStorage
     - Create nav buttons for each project
     - Render the default project
 */
-
+} else {
   let tempStorage = [...app.model.projects]
 
   localStorage.clear()
@@ -81,5 +81,5 @@ if (!localStorage.projects) {
     }
   }
   tempStorage = {}
-  console.log(tempStorage)
+  app.handleHome()
 }

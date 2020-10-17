@@ -28,6 +28,7 @@ export class ProjectView {
   getForm () {
     this.nameInput = document.querySelector(`#section-form-${this.id} [name="section"]`)
     this.submit = document.querySelector(`#section-form-${this.id} .btn--submit`)
+    this.form = document.querySelector(`#section-form-${this.id}`)
   }
 
   // Get Section's Name from the form
@@ -76,10 +77,10 @@ export class ProjectView {
   }
 
   bindAddSection (handler) {
-    this.container.addEventListener('submit', (event) => {
+    this.form.addEventListener('submit', (event) => {
       event.preventDefault()
       if (event.target.classList.contains('add--section')) {
-        handler(new TodoListController(new TodoListModel(this._sectionName, ProjectModel.counter), new TodoListView(ProjectModel.counter)))
+        handler(new TodoListController(new TodoListModel(this._sectionName, ProjectModel.counter), new TodoListView()))
         this._resetInput()
       }
     })

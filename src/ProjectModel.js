@@ -18,7 +18,6 @@ export class ProjectModel {
     this.todoLists.push(todoList)
     todoList.id = this.todoLists.length
     this._commit(this.todoLists)
-    localStorage.setItem('ProjectModelCounter', ProjectModel.counter)
   }
 
   editTodoList (id, name) {

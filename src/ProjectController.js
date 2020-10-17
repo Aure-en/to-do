@@ -6,7 +6,6 @@ export class ProjectController {
     this.model.bindProjectChange(this.onProjectChange.bind(this))
     this.view.bindChangeName(this.handleEditTodoList.bind(this))
     this.view.bindDeleteSection(this.handleDeleteTodoList.bind(this))
-    this.view.bindAddSection(this.handleAddTodoList.bind(this))
   }
 
   onProjectChange (todoLists) {
@@ -23,5 +22,9 @@ export class ProjectController {
 
   handleEditTodoList (id, name) {
     this.model.editTodoList(id, name)
+  }
+
+  bindAdd () {
+    this.view.bindAddSection(this.handleAddTodoList.bind(this))
   }
 }

@@ -45,6 +45,7 @@ export class AppController {
     project.view.render(project.model.todoLists)
     project.view.renderForm(project.model.form)
     project.view.getForm()
+    project.bindAdd()
   }
 
   // When a project is deleted, it is removed from the model and from the navigation.
