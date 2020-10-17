@@ -3,6 +3,7 @@ export class AppView {
     this.container = document.querySelector('.content')
     this.homeBtn = document.querySelector('.btn--home')
     this.main = document.querySelector('main')
+    this.project = document.querySelector('.project__name')
 
     // Form to create new projects
     this.projectInput = document.querySelector('.add--project [name="name"]')
@@ -117,6 +118,35 @@ export class AppView {
 
   bindDisplayAll (handler) {
     this.displayAllBtn.forEach((displayAllBtn) => displayAllBtn.addEventListener('click', handler))
+  }
+
+  // Sort
+  bindSortTitle (handler) {
+    this.sortTitle.addEventListener('click', () => {
+      const projectId = this.project.id
+      handler(projectId)
+    })
+  }
+
+  bindSortDescription (handler) {
+    this.sortDescription.addEventListener('click', () => {
+      const projectId = this.project.id
+      handler(projectId)
+    })
+  }
+
+  bindSortPriority (handler) {
+    this.sortPriority.addEventListener('click', () => {
+      const projectId = this.project.id
+      handler(projectId)
+    })
+  }
+
+  bindSortDate (handler) {
+    this.sortDate.addEventListener('click', () => {
+      const projectId = this.project.id
+      handler(projectId)
+    })
   }
 
   // Edit Project Name

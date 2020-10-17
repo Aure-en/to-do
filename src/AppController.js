@@ -14,14 +14,20 @@ export class AppController {
     this.view.bindDeleteProject(this.handleDeleteProject.bind(this))
     this.view.bindChangeName(this.handleChangeName.bind(this))
 
+    this.view.bindHome(this.handleHome.bind(this))
     this.view.bindNavToggle(this.handleNavToggle.bind(this))
     this.view.bindToggle(this.handleToggle.bind(this))
+
     this.view.bindDisplayAll(this.handleDisplayAll.bind(this))
     this.view.bindPriority(this.handlePriority.bind(this))
     this.view.bindDateToday(this.handleToday.bind(this))
     this.view.bindDateUpcoming(this.handleUpcoming.bind(this))
     this.view.bindDateAnytime(this.handleAnytime.bind(this))
-    this.view.bindHome(this.handleHome.bind(this))
+
+    this.view.bindSortTitle(this.handleSortTitle.bind(this))
+    this.view.bindSortDescription(this.handleSortDescription.bind(this))
+    this.view.bindSortDate(this.handleSortDate.bind(this))
+    this.view.bindSortPriority(this.handleSortPriority.bind(this))
   }
 
   // Display the new project and create a button linked to the project in the navigation.
@@ -135,6 +141,27 @@ export class AppController {
   handleDisplayAll () {
     const todos = document.querySelectorAll('.to-do')
     todos.forEach(todo => todo.classList.remove('no-display'))
+  }
+
+  // Sort
+  handleSortTitle (projectId) {
+    this.model.projects.filter((project) => project.id === +projectId)[0]
+      .model.todoLists.forEach((todoList) => todoList.model.sortTitle())
+  }
+
+  handleSortDescription (projectId) {
+    this.model.projects.filter((project) => project.id === +projectId)[0]
+      .model.todoLists.forEach((todoList) => todoList.model.sortDescription())
+  }
+
+  handleSortDate (projectId) {
+    this.model.projects.filter((project) => project.id === +projectId)[0]
+      .model.todoLists.forEach((todoList) => todoList.model.sortDate())
+  }
+
+  handleSortPriority (projectId) {
+    this.model.projects.filter((project) => project.id === +projectId)[0]
+      .model.todoLists.forEach((todoList) => todoList.model.sortPriority())
   }
 
   // Home page
