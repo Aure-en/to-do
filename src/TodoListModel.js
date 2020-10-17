@@ -8,6 +8,7 @@ export class TodoListModel {
     this.form = new TodoForm('add', this.id)
     this.projectId = projectId
     this.todos = []
+    this.sortStatus = ''
   }
 
   addTodo (todo) {
@@ -42,13 +43,21 @@ export class TodoListModel {
   }
 
   sortTitle () {
-    this.todos = this.todos.sort((a, b) => (a.title).localeCompare(b.title))
-    this.onTodoListChange(this.todos)
+    if (this.sortStatus === 'descending') {
+      this.todos = this.todos.sort((a, b) => (b.title).localeCompare(a.title))
+    } else {
+      this.todos = this.todos.sort((a, b) => (a.title).localeCompare(b.title))
+    }
+    this._sortChange(this.todos)
   }
 
   sortDescription () {
-    this.todos = this.todos.sort((a, b) => (a.description).localeCompare(b.description))
-    this.onTodoListChange(this.todos)
+    if (this.sortStatus === 'descending') {
+      this.todos = this.todos.sort((a, b) => (b.description).localeCompare(a.description))
+    } else {
+      this.todos = this.todos.sort((a, b) => (a.description).localeCompare(b.description))
+    }
+    this._sortChange(this.todos)
   }
 
   sortDate () {
@@ -58,16 +67,24 @@ export class TodoListModel {
       } else if (!b.date) {
         return -1
       } else {
-        return new Date(a.date) - new Date(b.date)
+        if (this.sortStatus === 'descending') {
+          return new Date(b.date) - new Date(a.date)
+        } else {
+          return new Date(a.date) - new Date(b.date)
+        }
       }
     })
-    this.onTodoListChange(this.todos)
+    this._sortChange(this.todos)
   }
 
   sortPriority () {
     this._getPriorityValue()
-    this.todos = this.todos.sort((a, b) => a.priorityValue - b.priorityValue)
-    this.onTodoListChange(this.todos)
+    if (this.sortStatus === 'descending') {
+      this.todos = this.todos.sort((a, b) => b.priorityValue - a.priorityValue)
+    } else {
+      this.todos = this.todos.sort((a, b) => a.priorityValue - b.priorityValue)
+    }
+    this._sortChange(this.todos)
   }
 
   _getPriorityValue () {
@@ -86,6 +103,11 @@ export class TodoListModel {
           todo.priorityValue = 0
       }
     }
+  }
+
+  _sortChange (todos) {
+    this.sortStatus = this.sortStatus === 'descending' ? 'ascending' : 'descending'
+    this.onTodoListChange(todos)
   }
 }
 
