@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>Too Blue Ist</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/9fbb921c08.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <header class="page__header">
+      <ul>
+        <li><button class="btn btn--home btn--icon btn--page--header" type="button"><i class="fas fa-home"></i></button></li>
+        <li><button class="btn btn--nav btn--icon btn--page--header" type="button" data-toggle="nav"><i class="fas fa-bars"></i></button></li>
+        <li><a href="https://github.com/Aure-en/to-do" class="btn--page--header btn--icon"><i class="far fa-folder-open"></i></a></li>
+      </ul>
+    </header>
+
+    <div class="content__wrapper">
+
+      <nav class="nav">
+        <ul>
+
+          <li class="nav__category">
+            <div class="nav__projects">
+              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="projects_list">Projects</button>
+              <ul class="dropdown" id="projects_list">
+                <ul class="projects"></ul>
+                <li class="project_list__add"><button class="btn btn--dropdown" data-toggle="add-project" type="button">Add Project</button></li>
+              </ul>
+
+              <form class="add add--project dropdown hidden" id="add-project">
+
+                <div class="add__content add__content--project">
+                  <label>
+                    <input type="text" name="name" placeholder="Project's Name">
+                  </label>
+                </div>
+
+                <div class="add__finish">
+                  <button type="submit" class="btn btn--submit">Add Project</button>
+                  <button type="button" class="btn btn--cancel">Cancel</button>
+                </div>
+
+
+              </form>
+
+            </div>
+          </li>
+
+          <li class="nav__category">
+            <button class="btn btn--dropdown nav--heading" type="button" data-toggle="sort_by">Sort By</button>
+            <ul class="nav__sorts dropdown" id="sort_by">
+              <li class="sort-title"><button type="button" class="btn" id="sort-title">Title</button></li>
+              <li class="sort-description"><button type="button" class="btn" id="sort-description">Description</button></li>
+              <li class="sort-date"><button type="button" class="btn" id="sort-date">Date</button></li>
+              <li class="sort-priority"><button type="button" class="btn" id="sort-priority">Priority</button></li>
+            </ul>
+          </li>
+
+          <li class="nav__category">
+            <div class="nav__to-do">
+              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="to-do_dates">Date</button>
+              <ul class="dropdown" id="to-do_dates">
+                <li class="date-all"><button class="btn btn--filter" type="button" data-filter="all">All Dates</button></li>
+                <li class="date-today"><button class="btn btn--filter" type="button" data-filter="date-today">Today</button></li>
+                <li class="date-upcoming"><button class="btn btn--filter" type="button" data-filter="date-upcoming">Upcoming</button></li>
+                <li class="date-anytime"><button class="btn btn--filter" type="button" data-filter="date-anytime">Anytime</button></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav__category">
+            <div class="nav__filters">
+              <button class="btn btn--dropdown nav--heading" type="button" data-toggle="filters_list">Priority</button>
+              <ul class="dropdown" id="filters_list">
+                <li class="priority-high"><button class="btn btn--filter" type="button" data-filter="priority-high">High Priority</button></li>
+                <li class="priority-med"><button class="btn btn--filter" type="button" data-filter="priority-med">Medium Priority</button></li>
+                <li class="priority-low"><button class="btn btn--filter" type="button" data-filter="priority-low">Low Priority</button></li>
+                <li class="priority-none"><button class="btn btn--filter" type="button" data-filter="priority-none">No Priority</button></li>
+                <li class="priority-all"><button class="btn btn--filter" type="button" data-filter="all">Any Priority</button></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+
+        <div class="content">
+
+          <h1 class="project__name" contenteditable></h1>
+
+          <div class="sections"></div>
+
+          <div class="add__section"></div>
+          
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
